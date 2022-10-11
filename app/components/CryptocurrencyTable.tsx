@@ -32,6 +32,14 @@ const Tr = styled.tr`
   }
 `;
 
+const RedSpan = styled.span`
+  color: #F44336;
+`;
+
+const GreenSpan = styled.span`
+  color: #18c683;
+`;
+
 const CryptocurrencyTable = ({
   cryptocurrencies,
 }: CryptocurrencyTableProps) => {
@@ -60,7 +68,11 @@ const CryptocurrencyTable = ({
             <Td>{reduceMoney(parseFloat(cryptocurrency.supply))}</Td>
             <Td>$ {reduceMoney(parseFloat(cryptocurrency.volumeUsd24Hr))}</Td>
             <Td align="right">
-              {reduceNumber(parseFloat(cryptocurrency.changePercent24Hr))}%
+              {
+              reduceNumber(parseFloat(cryptocurrency.changePercent24Hr)) > 0 ? <GreenSpan>{reduceNumber(parseFloat(cryptocurrency.changePercent24Hr))}%</GreenSpan> :
+              reduceNumber(parseFloat(cryptocurrency.changePercent24Hr)) < 0 ? <RedSpan>{reduceNumber(parseFloat(cryptocurrency.changePercent24Hr))}%</RedSpan> :
+              reduceNumber(parseFloat(cryptocurrency.changePercent24Hr)) + '%'
+              }
             </Td>
           </Tr>
         ))}
