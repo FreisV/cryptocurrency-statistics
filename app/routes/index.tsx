@@ -1,10 +1,6 @@
 import CryptocurrencyTable from "~/components/CryptocurrencyTable";
 import type { CryptocurrencyType } from "~/api/cryptocurrencies";
 
-type PropsType = {
-  cryptocurrencies: Array<CryptocurrencyType>
-}
-
 const Index = () => {
   const fakeCryptocurrencies: CryptocurrencyType[] = [
     {
