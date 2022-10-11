@@ -8,30 +8,38 @@ type CryptocurrencyTableProps = {
 
 const Table = styled.table`
   border-spacing: 0px;
-`
+`;
 
 const Th = styled.th`
   text-align: start;
   padding: 1em;
   border-top: 1px solid #c4c4c4;
   border-bottom: 1px solid #c4c4c4;
-`
+`;
 
 const Td = styled.td`
+  /*Adapt the text-align*/
+  text-align: ${(props) => (props.align ? props.align : "start")};
+
   padding: 1em;
   border-bottom: 1px solid #c4c4c4;
-`
+`;
+
+const Tr = styled.tr`
+  &:hover {
+    background-color: rgb(248, 250, 253);
+    cursor: pointer;
+  }
+`;
 
 const CryptocurrencyTable = ({
   cryptocurrencies,
 }: CryptocurrencyTableProps) => {
-
-  
   return (
     <Table>
       <thead>
         <tr>
-          <Th>Rank</Th>
+          <Th>#</Th>
           <Th colSpan={2}>Name</Th>
           <Th>Price</Th>
           <Th>Market Cap</Th>
@@ -43,18 +51,18 @@ const CryptocurrencyTable = ({
       </thead>
       <tbody>
         {cryptocurrencies.map((cryptocurrency) => (
-          <tr key={cryptocurrency.id}>
+          <Tr key={cryptocurrency.id}>
             <Td>{cryptocurrency.rank}</Td>
             <Td colSpan={2}>{cryptocurrency.name}</Td>
-            <Td>{reduceMoney(parseFloat(cryptocurrency.priceUsd))}</Td>
-            <Td>{reduceMoney(parseFloat(cryptocurrency.marketCapUsd))}</Td>
-            <Td>{reduceMoney(parseFloat(cryptocurrency.vwap24Hr))}</Td>
+            <Td>$ {reduceMoney(parseFloat(cryptocurrency.priceUsd))}</Td>
+            <Td>$ {reduceMoney(parseFloat(cryptocurrency.marketCapUsd))}</Td>
+            <Td>$ {reduceMoney(parseFloat(cryptocurrency.vwap24Hr))}</Td>
             <Td>{reduceMoney(parseFloat(cryptocurrency.supply))}</Td>
-            <Td>{reduceMoney(parseFloat(cryptocurrency.volumeUsd24Hr))}</Td>
-            <Td>
+            <Td>$ {reduceMoney(parseFloat(cryptocurrency.volumeUsd24Hr))}</Td>
+            <Td align="right">
               {reduceNumber(parseFloat(cryptocurrency.changePercent24Hr))}%
             </Td>
-          </tr>
+          </Tr>
         ))}
       </tbody>
     </Table>
