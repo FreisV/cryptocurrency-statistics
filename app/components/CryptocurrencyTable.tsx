@@ -6,7 +6,21 @@ type CryptocurrencyTableProps = {
   cryptocurrencies: CryptocurrencyType[];
 };
 
-// 
+const Table = styled.table`
+  border-spacing: 0px;
+`
+
+const Th = styled.th`
+  text-align: start;
+  padding: 1em;
+  border-top: 1px solid #c4c4c4;
+  border-bottom: 1px solid #c4c4c4;
+`
+
+const Td = styled.td`
+  padding: 1em;
+  border-bottom: 1px solid #c4c4c4;
+`
 
 const CryptocurrencyTable = ({
   cryptocurrencies,
@@ -14,36 +28,36 @@ const CryptocurrencyTable = ({
 
   
   return (
-    <table>
+    <Table>
       <thead>
         <tr>
-          <th>Rank</th>
-          <th colSpan={2}>Name</th>
-          <th>Price</th>
-          <th>Market Cap</th>
-          <th>VWAP(24Hr)</th>
-          <th>Supply</th>
-          <th>Volume(24Hr)</th>
-          <th>Change(24Hr)</th>
+          <Th>Rank</Th>
+          <Th colSpan={2}>Name</Th>
+          <Th>Price</Th>
+          <Th>Market Cap</Th>
+          <Th>VWAP(24Hr)</Th>
+          <Th>Supply</Th>
+          <Th>Volume(24Hr)</Th>
+          <Th>Change(24Hr)</Th>
         </tr>
       </thead>
       <tbody>
         {cryptocurrencies.map((cryptocurrency) => (
           <tr key={cryptocurrency.id}>
-            <td>{cryptocurrency.rank}</td>
-            <td colSpan={2}>{cryptocurrency.name}</td>
-            <td>{reduceMoney(parseFloat(cryptocurrency.priceUsd))}</td>
-            <td>{reduceMoney(parseFloat(cryptocurrency.marketCapUsd))}</td>
-            <td>{reduceMoney(parseFloat(cryptocurrency.vwap24Hr))}</td>
-            <td>{reduceMoney(parseFloat(cryptocurrency.supply))}</td>
-            <td>{reduceMoney(parseFloat(cryptocurrency.volumeUsd24Hr))}</td>
-            <td>
+            <Td>{cryptocurrency.rank}</Td>
+            <Td colSpan={2}>{cryptocurrency.name}</Td>
+            <Td>{reduceMoney(parseFloat(cryptocurrency.priceUsd))}</Td>
+            <Td>{reduceMoney(parseFloat(cryptocurrency.marketCapUsd))}</Td>
+            <Td>{reduceMoney(parseFloat(cryptocurrency.vwap24Hr))}</Td>
+            <Td>{reduceMoney(parseFloat(cryptocurrency.supply))}</Td>
+            <Td>{reduceMoney(parseFloat(cryptocurrency.volumeUsd24Hr))}</Td>
+            <Td>
               {reduceNumber(parseFloat(cryptocurrency.changePercent24Hr))}%
-            </td>
+            </Td>
           </tr>
         ))}
       </tbody>
-    </table>
+    </Table>
   );
 };
 
