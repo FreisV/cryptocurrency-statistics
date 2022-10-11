@@ -6,6 +6,6 @@ export const reduceMoney = (num: number) => {
   } else if (num >= 1000000) {
     return Math.round(num / 10000) / 100 + "m";
   } else {
-    return reduceNumber(num);
+    return reduceNumber(num).toLocaleString().replace(',', '.').replace(/\s/g,',');
   }
 };
