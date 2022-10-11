@@ -11,18 +11,27 @@ const Table = styled.table`
 `;
 
 const Th = styled.th`
-  text-align: start;
+  /*Adapt the text-align*/
+  text-align: ${(props) => (props.align ? props.align : "end")};
+
   padding: 1em;
   border-top: 1px solid #c4c4c4;
   border-bottom: 1px solid #c4c4c4;
+  font-weight: 500;
+  font-size: 1em;
+
+  &:nth-child(2) {
+    width: 20%;
+  }
 `;
 
 const Td = styled.td`
   /*Adapt the text-align*/
-  text-align: ${(props) => (props.align ? props.align : "start")};
+  text-align: ${(props) => (props.align ? props.align : "end")};
 
   padding: 1em;
   border-bottom: 1px solid #c4c4c4;
+  font-size: 0.9em;
 `;
 
 const Tr = styled.tr`
@@ -33,7 +42,7 @@ const Tr = styled.tr`
 `;
 
 const RedSpan = styled.span`
-  color: #F44336;
+  color: #f44336;
 `;
 
 const GreenSpan = styled.span`
@@ -48,7 +57,7 @@ const CryptocurrencyTable = ({
       <thead>
         <tr>
           <Th>#</Th>
-          <Th colSpan={2}>Name</Th>
+          <Th align="left">Name</Th>
           <Th>Price</Th>
           <Th>Market Cap</Th>
           <Th>VWAP(24Hr)</Th>
@@ -61,18 +70,26 @@ const CryptocurrencyTable = ({
         {cryptocurrencies.map((cryptocurrency) => (
           <Tr key={cryptocurrency.id}>
             <Td>{cryptocurrency.rank}</Td>
-            <Td colSpan={2}>{cryptocurrency.name}</Td>
+            <Td align="left">{cryptocurrency.name}</Td>
             <Td>$ {reduceMoney(parseFloat(cryptocurrency.priceUsd))}</Td>
             <Td>$ {reduceMoney(parseFloat(cryptocurrency.marketCapUsd))}</Td>
             <Td>$ {reduceMoney(parseFloat(cryptocurrency.vwap24Hr))}</Td>
             <Td>{reduceMoney(parseFloat(cryptocurrency.supply))}</Td>
             <Td>$ {reduceMoney(parseFloat(cryptocurrency.volumeUsd24Hr))}</Td>
-            <Td align="right">
-              {
-              reduceNumber(parseFloat(cryptocurrency.changePercent24Hr)) > 0 ? <GreenSpan>{reduceNumber(parseFloat(cryptocurrency.changePercent24Hr))}%</GreenSpan> :
-              reduceNumber(parseFloat(cryptocurrency.changePercent24Hr)) < 0 ? <RedSpan>{reduceNumber(parseFloat(cryptocurrency.changePercent24Hr))}%</RedSpan> :
-              reduceNumber(parseFloat(cryptocurrency.changePercent24Hr)) + '%'
-              }
+            <Td>
+              {reduceNumber(parseFloat(cryptocurrency.changePercent24Hr)) >
+              0 ? (
+                <GreenSpan>
+                  {reduceNumber(parseFloat(cryptocurrency.changePercent24Hr))}%
+                </GreenSpan>
+              ) : reduceNumber(parseFloat(cryptocurrency.changePercent24Hr)) <
+                0 ? (
+                <RedSpan>
+                  {reduceNumber(parseFloat(cryptocurrency.changePercent24Hr))}%
+                </RedSpan>
+              ) : (
+                reduceNumber(parseFloat(cryptocurrency.changePercent24Hr)) + "%"
+              )}
             </Td>
           </Tr>
         ))}
