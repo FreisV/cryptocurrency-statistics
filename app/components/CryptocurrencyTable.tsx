@@ -1,8 +1,8 @@
-import { Link, NavLink } from "@remix-run/react";
-import { useState } from "react";
+import { Link } from "@remix-run/react";
 import styled from "styled-components";
 import type { CryptocurrencyType } from "~/api/cryptocurrencies";
 import { reduceNumber, reduceMoney } from "../utils/helpers/helpers";
+import { GreenSpan, RedSpan } from "./styles";
 
 type CryptocurrencyTableProps = {
   cryptocurrencies: CryptocurrencyType[];
@@ -40,14 +40,6 @@ const Tr = styled.tr`
     background-color: rgb(248, 250, 253);
     cursor: pointer;
   }
-`;
-
-const RedSpan = styled.span`
-  color: #f44336;
-`;
-
-const GreenSpan = styled.span`
-  color: #18c683;
 `;
 
 const StyledLink = styled(Link)`
