@@ -1,3 +1,5 @@
+import { Link, NavLink } from "@remix-run/react";
+import { useState } from "react";
 import styled from "styled-components";
 import type { CryptocurrencyType } from "~/api/cryptocurrencies";
 import { reduceNumber, reduceMoney } from "../utils/helpers/helpers";
@@ -29,7 +31,6 @@ const Td = styled.td`
   /*Adapt the text-align*/
   text-align: ${(props) => (props.align ? props.align : "end")};
 
-  padding: 1em;
   border-bottom: 1px solid #c4c4c4;
   font-size: 0.9em;
 `;
@@ -48,6 +49,13 @@ const RedSpan = styled.span`
 const GreenSpan = styled.span`
   color: #18c683;
 `;
+
+const StyledLink = styled(Link)`
+  display: block;
+  padding:1.5em;
+  color: black;
+  text-decoration: none;
+`
 
 const CryptocurrencyTable = ({
   cryptocurrencies,
@@ -69,14 +77,14 @@ const CryptocurrencyTable = ({
       <tbody>
         {cryptocurrencies.map((cryptocurrency) => (
           <Tr key={cryptocurrency.id}>
-            <Td>{cryptocurrency.rank}</Td>
-            <Td align="left">{cryptocurrency.name}</Td>
-            <Td>$ {reduceMoney(parseFloat(cryptocurrency.priceUsd))}</Td>
-            <Td>$ {reduceMoney(parseFloat(cryptocurrency.marketCapUsd))}</Td>
-            <Td>$ {reduceMoney(parseFloat(cryptocurrency.vwap24Hr))}</Td>
-            <Td>{reduceMoney(parseFloat(cryptocurrency.supply))}</Td>
-            <Td>$ {reduceMoney(parseFloat(cryptocurrency.volumeUsd24Hr))}</Td>
-            <Td>
+            <Td><StyledLink to={cryptocurrency.id}>{cryptocurrency.rank}</StyledLink></Td>
+            <Td align="left"><StyledLink to={cryptocurrency.id}>{cryptocurrency.name}</StyledLink></Td>
+            <Td><StyledLink to={cryptocurrency.id}>$ {reduceMoney(parseFloat(cryptocurrency.priceUsd))}</StyledLink></Td>
+            <Td><StyledLink to={cryptocurrency.id}>$ {reduceMoney(parseFloat(cryptocurrency.marketCapUsd))}</StyledLink></Td>
+            <Td><StyledLink to={cryptocurrency.id}>$ {reduceMoney(parseFloat(cryptocurrency.vwap24Hr))}</StyledLink></Td>
+            <Td><StyledLink to={cryptocurrency.id}>{reduceMoney(parseFloat(cryptocurrency.supply))}</StyledLink></Td>
+            <Td><StyledLink to={cryptocurrency.id}>$ {reduceMoney(parseFloat(cryptocurrency.volumeUsd24Hr))}</StyledLink></Td>
+            <Td><StyledLink to={cryptocurrency.id}>
               {reduceNumber(parseFloat(cryptocurrency.changePercent24Hr)) >
               0 ? (
                 <GreenSpan>
@@ -90,8 +98,8 @@ const CryptocurrencyTable = ({
               ) : (
                 reduceNumber(parseFloat(cryptocurrency.changePercent24Hr)) + "%"
               )}
-            </Td>
-          </Tr>
+            </StyledLink></Td>
+          </Tr> 
         ))}
       </tbody>
     </Table>
