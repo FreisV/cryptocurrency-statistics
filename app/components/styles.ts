@@ -21,7 +21,7 @@ export const Main = styled.main`
   flex-direction: column;
   justify-content: center;
   max-width: 1440px;
-  width: 90%;
+  width: 95%;
 `;
 
 export const RedSpan = styled.span`
