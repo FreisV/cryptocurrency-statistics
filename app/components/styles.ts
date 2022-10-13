@@ -33,39 +33,47 @@ export const GreenSpan = styled.span`
 `;
 
 type FlexProps = {
-  maxWidth?:string;
+  maxWidth?: string;
+  minWidth?: string;
   width?: string;
   maxHeight?: string;
+  minHeight?: string;
   height?: string;
   align?: string;
   justify?: string;
   wrap?: string;
-}
+};
 
 export const Row = styled.div<FlexProps>`
   display: flex;
   flex-direction: row;
-  
-  width: ${props => props.width ? props.width : 'auto'};
-  max-width: ${props => props.maxWidth ? props.maxWidth : 'auto'};
-  height: ${props => props.height ? props.height : 'auto'};;
-  max-height: ${props => props.maxHeight ? props.maxHeight : 'auto'};;
-  align-items: ${props => props.align ? props.align : 'initial'};
-  justify-content: ${props => props.justify ? props.justify : 'space-between'};
-  flex-wrap: ${props => props.wrap ? props.wrap : 'initial'}
-`
+
+  width: ${(props) => (props.width ? props.width : "auto")};
+  max-width: ${(props) => (props.maxWidth ? props.maxWidth : "auto")};
+  min-width: ${(props) => (props.minWidth ? props.minWidth : "auto")};;
+  height: ${(props) => (props.height ? props.height : "auto")};
+  max-height: ${(props) => (props.maxHeight ? props.maxHeight : "auto")};
+  min-height: ${(props) => (props.minHeight ? props.minHeight : "auto")};
+  align-items: ${(props) => (props.align ? props.align : "initial")};
+  justify-content: ${(props) =>
+  props.justify ? props.justify : "space-between"};
+  flex-wrap: ${(props) => (props.wrap ? props.wrap : "initial")};
+`;
 export const Col = styled.div<FlexProps>`
   display: flex;
   flex-direction: column;
 
-  width: ${props => props.width ? props.width : 'auto'};
-  max-width: ${props => props.maxWidth ? props.maxWidth : 'auto'};
-  height: ${props => props.height ? props.height : 'auto'};;
-  max-height: ${props => props.maxHeight ? props.maxHeight : 'auto'};;
-  align-items: ${props => props.align ? props.align : 'initial'};
-  justify-content: ${props => props.justify ? props.justify : 'space-between'};
-  flex-wrap: ${props => props.wrap ? props.wrap : 'initial'}
-`
+  width: ${(props) => (props.width ? props.width : "auto")};
+  max-width: ${(props) => (props.maxWidth ? props.maxWidth : "auto")};
+  min-width: ${(props) => (props.minWidth ? props.minWidth : "auto")};;
+  height: ${(props) => (props.height ? props.height : "auto")};
+  max-height: ${(props) => (props.maxHeight ? props.maxHeight : "auto")};
+  min-height: ${(props) => (props.minHeight ? props.minHeight : "auto")};
+  align-items: ${(props) => (props.align ? props.align : "initial")};
+  justify-content: ${(props) =>
+  props.justify ? props.justify : "space-between"};
+  flex-wrap: ${(props) => (props.wrap ? props.wrap : "initial")};
+`;
 
 export const StyledHeader = styled.header`
   display: flex;
@@ -77,9 +85,7 @@ export const StyledHeader = styled.header`
   margin-bottom: 30px;
   color: #3b3b3b;
 
-  
   -webkit-box-shadow: 0px 4px 27px 2px rgba(34, 60, 80, 0.17);
   -moz-box-shadow: 0px 4px 27px 2px rgba(34, 60, 80, 0.17);
   box-shadow: 0px 4px 27px 2px rgba(34, 60, 80, 0.17);
-
 `;
