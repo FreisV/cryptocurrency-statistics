@@ -20,7 +20,8 @@ export const Main = styled.main`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 1440px;
+  max-width: 1440px;
+  width: 90%;
 `;
 
 export const RedSpan = styled.span`
@@ -38,6 +39,7 @@ type FlexProps = {
   height?: string;
   align?: string;
   justify?: string;
+  wrap?: string;
 }
 
 export const Row = styled.div<FlexProps>`
