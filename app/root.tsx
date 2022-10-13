@@ -8,6 +8,7 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 import { createGlobalStyle } from "styled-components";
+import { Global } from "./components/styles";
 
 export const links: LinksFunction = () => {
   return [
@@ -30,14 +31,7 @@ export const meta: MetaFunction = () => ({
   viewport: "width=device-width,initial-scale=1",
 });
 
-const Global = createGlobalStyle`
-  *{
-    margin :0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
-  }
-`;
+
 
 export default function App() {
   return (

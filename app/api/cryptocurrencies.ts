@@ -61,3 +61,7 @@ export const getCryptocurrencies = () => {
 export const getCryptocurrencyById = (cryptocurrencyId: string) => {
   return fakeCryptocurrencies.filter(cryptocurrency => cryptocurrency.id === cryptocurrencyId)[0];
 }
+
+export const getTopThreeCryptocurrencies = () => {
+  return fakeCryptocurrencies.slice(0,3)
+}
