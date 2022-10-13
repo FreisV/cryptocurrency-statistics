@@ -1,4 +1,5 @@
-import type { CryptocurrencyType } from "~/api/cryptocurrencies";
+import type { CryptocurrencyType} from "~/api/cryptocurrencies";
+import { getTopThreeCryptocurrencies } from "~/api/cryptocurrencies";
 import { getCryptocurrencyById } from "~/api/cryptocurrencies";
 import invariant from "tiny-invariant";
 import type { LoaderFunction } from "@remix-run/node";
@@ -13,12 +14,19 @@ import {
 } from "~/components/styles";
 import styled from "styled-components";
 import { reduceMoney, reduceNumber } from "~/utils/helpers/helpers";
+import Header from "~/components/Header";
+
+type LoaderType = {
+  cryptocurrency: CryptocurrencyType;
+    topThree: CryptocurrencyType[];
+} 
 
 export const loader: LoaderFunction = ({ params }) => {
   invariant(params.cryptocurrencyId, "expected params.cryptocurrencyId");
   const cryptocurrency = getCryptocurrencyById(params.cryptocurrencyId);
+  const topThree = getTopThreeCryptocurrencies();
 
-  return cryptocurrency;
+  return {cryptocurrency, topThree};
 };
 
 const H2 = styled.h2`
@@ -41,7 +49,7 @@ const B = styled.b`
 `;
 
 const CryptocurrencyInfo = () => {
-  const cryptocurrency = useLoaderData<CryptocurrencyType>();
+  const {cryptocurrency, topThree} = useLoaderData<LoaderType>();
 
   const vwap24Hr = reduceMoney(parseFloat(cryptocurrency.vwap24Hr));
   const changePercent24Hr = reduceNumber(
@@ -50,6 +58,7 @@ const CryptocurrencyInfo = () => {
 
   return (
     <Wrapper>
+      <Header topThree={topThree}/>
       <Main>
         <Row>
           <Col>
