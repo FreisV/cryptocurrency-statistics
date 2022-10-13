@@ -52,6 +52,7 @@ export const Row = styled.div<FlexProps>`
   max-height: ${props => props.maxHeight ? props.maxHeight : 'auto'};;
   align-items: ${props => props.align ? props.align : 'initial'};
   justify-content: ${props => props.justify ? props.justify : 'space-between'};
+  flex-wrap: ${props => props.wrap ? props.wrap : 'initial'}
 `
 export const Col = styled.div<FlexProps>`
   display: flex;
@@ -63,6 +64,7 @@ export const Col = styled.div<FlexProps>`
   max-height: ${props => props.maxHeight ? props.maxHeight : 'auto'};;
   align-items: ${props => props.align ? props.align : 'initial'};
   justify-content: ${props => props.justify ? props.justify : 'space-between'};
+  flex-wrap: ${props => props.wrap ? props.wrap : 'initial'}
 `
 
 export const StyledHeader = styled.header`
