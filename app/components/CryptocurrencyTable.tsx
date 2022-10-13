@@ -21,6 +21,7 @@ const Th = styled.th`
   border-bottom: 1px solid #c4c4c4;
   font-weight: 500;
   font-size: 1em;
+  padding: 1em 1.5em;
 
   &:nth-child(2) {
     width: 20%;
@@ -56,7 +57,7 @@ const CryptocurrencyTable = ({
     <Table>
       <thead>
         <tr>
-          <Th>#</Th>
+          <Th align="left">#</Th>
           <Th align="left">Name</Th>
           <Th>Price</Th>
           <Th>Market Cap</Th>
@@ -69,7 +70,7 @@ const CryptocurrencyTable = ({
       <tbody>
         {cryptocurrencies.map((cryptocurrency) => (
           <Tr key={cryptocurrency.id}>
-            <Td><StyledLink to={cryptocurrency.id}>{cryptocurrency.rank}</StyledLink></Td>
+            <Td align="left"><StyledLink to={cryptocurrency.id}>{cryptocurrency.rank}</StyledLink></Td>
             <Td align="left"><StyledLink to={cryptocurrency.id}>{cryptocurrency.name}</StyledLink></Td>
             <Td><StyledLink to={cryptocurrency.id}>$ {reduceMoney(parseFloat(cryptocurrency.priceUsd))}</StyledLink></Td>
             <Td><StyledLink to={cryptocurrency.id}>$ {reduceMoney(parseFloat(cryptocurrency.marketCapUsd))}</StyledLink></Td>
