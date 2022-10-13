@@ -13,8 +13,8 @@ type LoaderType = {
 } 
 
 export const loader: LoaderFunction = async () => {
-  const cryptocurrencies = getCryptocurrencies();
-  const topThree = getTopThreeCryptocurrencies();
+  const cryptocurrencies = await getCryptocurrencies();
+  const topThree = await getTopThreeCryptocurrencies();
 
   return {cryptocurrencies, topThree};
 };

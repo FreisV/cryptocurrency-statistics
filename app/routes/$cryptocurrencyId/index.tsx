@@ -7,9 +7,9 @@ import { Col, GreenSpan, Main, RedSpan, Row } from "~/components/styles";
 import styled from "styled-components";
 import { reduceMoney, reduceNumber } from "~/utils/helpers/helpers";
 
-export const loader: LoaderFunction = ({ params }) => {
+export const loader: LoaderFunction = async ({ params }) => {
   invariant(params.cryptocurrencyId, "expected params.cryptocurrencyId");
-  const cryptocurrency = getCryptocurrencyById(params.cryptocurrencyId);
+  const cryptocurrency = await getCryptocurrencyById(params.cryptocurrencyId);
 
   return cryptocurrency;
 };
