@@ -12,8 +12,8 @@ export type CryptocurrencyType = {
   vwap24Hr: string;
 };
 
-export const getCryptocurrencies = async () => {
-  const response = await fetch('https://api.coincap.io/v2/assets?limit=20');
+export const getCryptocurrencies = async (page: number) => {
+  const response = await fetch(`https://api.coincap.io/v2/assets?offset=${page * 50 - 50}&limit=50`);
   const cryptocurrencies: CryptocurrencyType[] = (await response.json()).data;
   return cryptocurrencies;
 }
