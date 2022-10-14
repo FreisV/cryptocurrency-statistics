@@ -20,6 +20,7 @@ export const Main = styled.main`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   max-width: 1440px;
   width: 95%;
 `;
