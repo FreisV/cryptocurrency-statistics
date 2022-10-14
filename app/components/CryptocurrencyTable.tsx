@@ -9,6 +9,7 @@ type CryptocurrencyTableProps = {
 };
 
 const Table = styled.table`
+  width: 95%;
   border-spacing: 0px;
 `;
 
@@ -45,10 +46,10 @@ const Tr = styled.tr`
 
 const StyledLink = styled(Link)`
   display: block;
-  padding:1.5em;
+  padding: 1.5em;
   color: black;
   text-decoration: none;
-`
+`;
 
 const CryptocurrencyTable = ({
   cryptocurrencies,
@@ -70,29 +71,62 @@ const CryptocurrencyTable = ({
       <tbody>
         {cryptocurrencies.map((cryptocurrency) => (
           <Tr key={cryptocurrency.id}>
-            <Td align="left"><StyledLink to={cryptocurrency.id} prefetch="intent">{cryptocurrency.rank}</StyledLink></Td>
-            <Td align="left"><StyledLink to={cryptocurrency.id} prefetch="intent">{cryptocurrency.name}</StyledLink></Td>
-            <Td><StyledLink to={cryptocurrency.id} prefetch="intent">$ {reduceMoney(parseFloat(cryptocurrency.priceUsd))}</StyledLink></Td>
-            <Td><StyledLink to={cryptocurrency.id} prefetch="intent">$ {reduceMoney(parseFloat(cryptocurrency.marketCapUsd))}</StyledLink></Td>
-            <Td><StyledLink to={cryptocurrency.id} prefetch="intent">$ {reduceMoney(parseFloat(cryptocurrency.vwap24Hr))}</StyledLink></Td>
-            <Td><StyledLink to={cryptocurrency.id} prefetch="intent">{reduceMoney(parseFloat(cryptocurrency.supply))}</StyledLink></Td>
-            <Td><StyledLink to={cryptocurrency.id} prefetch="intent">$ {reduceMoney(parseFloat(cryptocurrency.volumeUsd24Hr))}</StyledLink></Td>
-            <Td><StyledLink to={cryptocurrency.id} prefetch="intent">
-              {reduceNumber(parseFloat(cryptocurrency.changePercent24Hr)) >
-              0 ? (
-                <GreenSpan>
-                  {reduceNumber(parseFloat(cryptocurrency.changePercent24Hr))}%
-                </GreenSpan>
-              ) : reduceNumber(parseFloat(cryptocurrency.changePercent24Hr)) <
+            <Td align="left">
+              <StyledLink to={cryptocurrency.id} prefetch="intent">
+                {cryptocurrency.rank}
+              </StyledLink>
+            </Td>
+            <Td align="left">
+              <StyledLink to={cryptocurrency.id} prefetch="intent">
+                {cryptocurrency.name}
+              </StyledLink>
+            </Td>
+            <Td>
+              <StyledLink to={cryptocurrency.id} prefetch="intent">
+                $ {reduceMoney(parseFloat(cryptocurrency.priceUsd))}
+              </StyledLink>
+            </Td>
+            <Td>
+              <StyledLink to={cryptocurrency.id} prefetch="intent">
+                $ {reduceMoney(parseFloat(cryptocurrency.marketCapUsd))}
+              </StyledLink>
+            </Td>
+            <Td>
+              <StyledLink to={cryptocurrency.id} prefetch="intent">
+                $ {reduceMoney(parseFloat(cryptocurrency.vwap24Hr))}
+              </StyledLink>
+            </Td>
+            <Td>
+              <StyledLink to={cryptocurrency.id} prefetch="intent">
+                {reduceMoney(parseFloat(cryptocurrency.supply))}
+              </StyledLink>
+            </Td>
+            <Td>
+              <StyledLink to={cryptocurrency.id} prefetch="intent">
+                $ {reduceMoney(parseFloat(cryptocurrency.volumeUsd24Hr))}
+              </StyledLink>
+            </Td>
+            <Td>
+              <StyledLink to={cryptocurrency.id} prefetch="intent">
+                {reduceNumber(parseFloat(cryptocurrency.changePercent24Hr)) >
                 0 ? (
-                <RedSpan>
-                  {reduceNumber(parseFloat(cryptocurrency.changePercent24Hr))}%
-                </RedSpan>
-              ) : (
-                reduceNumber(parseFloat(cryptocurrency.changePercent24Hr)) + "%"
-              )}
-            </StyledLink></Td>
-          </Tr> 
+                  <GreenSpan>
+                    {reduceNumber(parseFloat(cryptocurrency.changePercent24Hr))}
+                    %
+                  </GreenSpan>
+                ) : reduceNumber(parseFloat(cryptocurrency.changePercent24Hr)) <
+                  0 ? (
+                  <RedSpan>
+                    {reduceNumber(parseFloat(cryptocurrency.changePercent24Hr))}
+                    %
+                  </RedSpan>
+                ) : (
+                  reduceNumber(parseFloat(cryptocurrency.changePercent24Hr)) +
+                  "%"
+                )}
+              </StyledLink>
+            </Td>
+          </Tr>
         ))}
       </tbody>
     </Table>
