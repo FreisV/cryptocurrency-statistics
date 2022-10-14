@@ -10,7 +10,10 @@ type HeaderProps = {
 }
 
 const Logo = styled.h1`
-  padding: 10px 30px;
+  margin: 10px 30px;
+  padding: 2px;
+  border: 2px solid black;
+  border-radius: 4px;
   text-decoration: none;
 `;
 
