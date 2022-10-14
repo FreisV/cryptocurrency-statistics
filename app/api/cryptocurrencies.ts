@@ -3,13 +3,13 @@ export type CryptocurrencyType = {
   rank: string;
   symbol: string;
   name: string;
-  supply: string;
+  supply: string | null;
   maxSupply: string | null;
-  marketCapUsd: string;
-  volumeUsd24Hr: string;
+  marketCapUsd: string | null;
+  volumeUsd24Hr: string | null;
   priceUsd: string;
-  changePercent24Hr: string;
-  vwap24Hr: string;
+  changePercent24Hr: string| null;
+  vwap24Hr: string | null;
 };
 
 export const getCryptocurrencies = async (page: number) => {

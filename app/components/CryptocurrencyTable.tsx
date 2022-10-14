@@ -88,27 +88,37 @@ const CryptocurrencyTable = ({
             </Td>
             <Td>
               <StyledLink to={cryptocurrency.id} prefetch="intent">
-                $ {reduceMoney(parseFloat(cryptocurrency.marketCapUsd))}
+                {cryptocurrency.marketCapUsd ? 
+                '$ ' + reduceMoney(parseFloat(cryptocurrency.marketCapUsd)) :
+                'none'}
               </StyledLink>
             </Td>
             <Td>
               <StyledLink to={cryptocurrency.id} prefetch="intent">
-                $ {reduceMoney(parseFloat(cryptocurrency.vwap24Hr))}
+              {cryptocurrency.vwap24Hr ? 
+                '$ ' + reduceMoney(parseFloat(cryptocurrency.vwap24Hr)) :
+                'none'}
               </StyledLink>
             </Td>
             <Td>
               <StyledLink to={cryptocurrency.id} prefetch="intent">
-                {reduceMoney(parseFloat(cryptocurrency.supply))}
+                {cryptocurrency.supply && (parseFloat(cryptocurrency.supply) * 10**10) > 0  ? 
+                reduceMoney(parseFloat(cryptocurrency.supply)) :
+                'none'}
               </StyledLink>
             </Td>
             <Td>
               <StyledLink to={cryptocurrency.id} prefetch="intent">
-                $ {reduceMoney(parseFloat(cryptocurrency.volumeUsd24Hr))}
+              {cryptocurrency.volumeUsd24Hr ? 
+                '$ ' + reduceMoney(parseFloat(cryptocurrency.volumeUsd24Hr)) :
+                'none'}
               </StyledLink>
             </Td>
             <Td>
               <StyledLink to={cryptocurrency.id} prefetch="intent">
-                {reduceNumber(parseFloat(cryptocurrency.changePercent24Hr)) >
+              {!cryptocurrency.changePercent24Hr ? 
+                'none' :
+                reduceNumber(parseFloat(cryptocurrency.changePercent24Hr)) >
                 0 ? (
                   <GreenSpan>
                     {reduceNumber(parseFloat(cryptocurrency.changePercent24Hr))}
