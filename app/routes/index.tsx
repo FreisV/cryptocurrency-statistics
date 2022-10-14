@@ -6,6 +6,7 @@ import type { LoaderFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import { Main, Wrapper } from "~/components/styles";
 import Header from "~/components/Header";
+import Pagination from "~/components/Pagination";
 
 type LoaderType = {
   cryptocurrencies: CryptocurrencyType[];
@@ -27,6 +28,7 @@ const Index = () => {
       <Header topThree={topThree}/>
       <Main>
         <CryptocurrencyTable cryptocurrencies={cryptocurrencies} />
+        <Pagination currentPage={1}/>
       </Main>
     </Wrapper>
   );
