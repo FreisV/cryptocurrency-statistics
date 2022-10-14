@@ -1,5 +1,5 @@
 import CryptocurrencyTable from "~/components/CryptocurrencyTable";
-import type { CryptocurrencyType} from "~/api/cryptocurrencies";
+import type { CryptocurrencyType } from "~/api/cryptocurrencies";
 import { getTopThreeCryptocurrencies } from "~/api/cryptocurrencies";
 import { getCryptocurrencies } from "~/api/cryptocurrencies";
 import type { LoaderFunction } from "@remix-run/node";
@@ -11,24 +11,29 @@ import Pagination from "~/components/Pagination";
 type LoaderType = {
   cryptocurrencies: CryptocurrencyType[];
   topThree: CryptocurrencyType[];
-} 
+  page: number;
+};
 
-export const loader: LoaderFunction = async () => {
-  const cryptocurrencies = await getCryptocurrencies();
+export const loader: LoaderFunction = async ({ request }) => {
+  const url = new URL(request.url);
+  const page = parseInt(url.searchParams.get("page") || "1");
+
+  const cryptocurrencies = await getCryptocurrencies(page);
   const topThree = await getTopThreeCryptocurrencies();
 
-  return {cryptocurrencies, topThree};
+  return { cryptocurrencies, topThree, page };
 };
 
 const Index = () => {
-  const {cryptocurrencies, topThree} = useLoaderData<LoaderType>();
+  const { cryptocurrencies, topThree, page } = useLoaderData<LoaderType>();
 
   return (
     <Wrapper>
-      <Header topThree={topThree}/>
+      <Header topThree={topThree} />
       <Main>
+        <Pagination currentPage={page} />
         <CryptocurrencyTable cryptocurrencies={cryptocurrencies} />
-        <Pagination currentPage={1}/>
+        <Pagination currentPage={page} />
       </Main>
     </Wrapper>
   );
