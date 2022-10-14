@@ -70,14 +70,14 @@ const CryptocurrencyTable = ({
       <tbody>
         {cryptocurrencies.map((cryptocurrency) => (
           <Tr key={cryptocurrency.id}>
-            <Td align="left"><StyledLink to={cryptocurrency.id}>{cryptocurrency.rank}</StyledLink></Td>
-            <Td align="left"><StyledLink to={cryptocurrency.id}>{cryptocurrency.name}</StyledLink></Td>
-            <Td><StyledLink to={cryptocurrency.id}>$ {reduceMoney(parseFloat(cryptocurrency.priceUsd))}</StyledLink></Td>
-            <Td><StyledLink to={cryptocurrency.id}>$ {reduceMoney(parseFloat(cryptocurrency.marketCapUsd))}</StyledLink></Td>
-            <Td><StyledLink to={cryptocurrency.id}>$ {reduceMoney(parseFloat(cryptocurrency.vwap24Hr))}</StyledLink></Td>
-            <Td><StyledLink to={cryptocurrency.id}>{reduceMoney(parseFloat(cryptocurrency.supply))}</StyledLink></Td>
-            <Td><StyledLink to={cryptocurrency.id}>$ {reduceMoney(parseFloat(cryptocurrency.volumeUsd24Hr))}</StyledLink></Td>
-            <Td><StyledLink to={cryptocurrency.id}>
+            <Td align="left"><StyledLink to={cryptocurrency.id} prefetch="intent">{cryptocurrency.rank}</StyledLink></Td>
+            <Td align="left"><StyledLink to={cryptocurrency.id} prefetch="intent">{cryptocurrency.name}</StyledLink></Td>
+            <Td><StyledLink to={cryptocurrency.id} prefetch="intent">$ {reduceMoney(parseFloat(cryptocurrency.priceUsd))}</StyledLink></Td>
+            <Td><StyledLink to={cryptocurrency.id} prefetch="intent">$ {reduceMoney(parseFloat(cryptocurrency.marketCapUsd))}</StyledLink></Td>
+            <Td><StyledLink to={cryptocurrency.id} prefetch="intent">$ {reduceMoney(parseFloat(cryptocurrency.vwap24Hr))}</StyledLink></Td>
+            <Td><StyledLink to={cryptocurrency.id} prefetch="intent">{reduceMoney(parseFloat(cryptocurrency.supply))}</StyledLink></Td>
+            <Td><StyledLink to={cryptocurrency.id} prefetch="intent">$ {reduceMoney(parseFloat(cryptocurrency.volumeUsd24Hr))}</StyledLink></Td>
+            <Td><StyledLink to={cryptocurrency.id} prefetch="intent">
               {reduceNumber(parseFloat(cryptocurrency.changePercent24Hr)) >
               0 ? (
                 <GreenSpan>
