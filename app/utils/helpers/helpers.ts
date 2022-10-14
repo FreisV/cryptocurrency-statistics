@@ -1,4 +1,13 @@
-export const reduceNumber = (num: number) => Math.round(num * 100) / 100;
+export const reduceNumber = (num: number, precision: number = 2) => Math.round(num * 10**precision) / 10**precision;
+
+const getPrecision = (num: number) => {
+  let counter = 2;
+  while (Math.round(num * 10**counter) === 0) {
+    counter++
+  }
+
+  return counter
+} 
 
 export const reduceMoney = (num: number) => {
   if (num >= 1000000000) {
@@ -6,6 +15,11 @@ export const reduceMoney = (num: number) => {
   } else if (num >= 1000000) {
     return Math.round(num / 10000) / 100 + "m";
   } else {
-    return reduceNumber(num).toLocaleString().replace(',', '.').replace(/\s/g,',');
+    const res = reduceNumber(num, getPrecision(num))
+    if (res < 1) {
+      return res;
+    } else {
+      return res.toLocaleString().replace(',', '.').replace(/\s/g,',');
+    }
   }
 };
