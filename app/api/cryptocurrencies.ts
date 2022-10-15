@@ -29,3 +29,14 @@ export const getTopThreeCryptocurrencies = async () => {
   const cryptocurrencies: CryptocurrencyType[] = (await response.json()).data;
   return cryptocurrencies;
 }
+
+export type HistoryType = {
+  priceUsd: string,
+  time: number,
+}
+
+export const getHistoryById = async (cryptocurrencyId: string) => {
+  const response = await fetch(`https://api.coincap.io/v2/assets/${cryptocurrencyId}/history?interval=h1`)
+  const history: HistoryType[] = (await response.json()).data;
+  return history;
+}
