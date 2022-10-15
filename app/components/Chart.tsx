@@ -9,6 +9,7 @@ import {
   Legend,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
+import styled from "styled-components";
 
 ChartJS.register(
   CategoryScale,
@@ -26,9 +27,18 @@ type ChartProps = {
   values: number[];
 }
 
+const StyledLine = styled(Line)`
+  max-height: 720px;  
+
+  @media (max-width: 1000px) {
+    max-height: 400px;
+  }
+`
+
 const Chart = ({name, labels, values} : ChartProps) => {
   const options = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         position: "top" as const,
@@ -52,7 +62,7 @@ const Chart = ({name, labels, values} : ChartProps) => {
     ],
   };
 
-  return <Line options={options} data={data} />;
+  return <StyledLine options={options} data={data} />;
 };
 
 export default Chart;
