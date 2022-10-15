@@ -7,7 +7,7 @@ export type CryptocurrencyType = {
   maxSupply: string | null;
   marketCapUsd: string | null;
   volumeUsd24Hr: string | null;
-  priceUsd: string;
+  priceUsd: string | null;
   changePercent24Hr: string| null;
   vwap24Hr: string | null;
 };

@@ -83,7 +83,9 @@ const CryptocurrencyTable = ({
             </Td>
             <Td>
               <StyledLink to={cryptocurrency.id} prefetch="intent">
-                $ {reduceMoney(parseFloat(cryptocurrency.priceUsd))}
+              {cryptocurrency.priceUsd ? 
+                '$ ' + reduceMoney(parseFloat(cryptocurrency.priceUsd)) :
+                'none'}
               </StyledLink>
             </Td>
             <Td>
