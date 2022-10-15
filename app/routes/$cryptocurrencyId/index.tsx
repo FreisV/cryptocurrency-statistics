@@ -50,6 +50,10 @@ const InfoBlock = styled(Row)`
   width: 60%;
   max-width: 350px;
   height: 80px;
+
+  @media (max-width: 600px) {
+    width: 100%;
+  }
 `;
 
 const Grey = styled.span`
@@ -110,7 +114,7 @@ const CryptocurrencyInfo = () => {
         </Col>
 
         <InfoBlock>
-          <Col width="46%" minWidth="150px">
+          <Col width="46%" minWidth="140px">
             <Row>
               <Grey>HIGH</Grey>
               <B>$ {high}</B>
@@ -120,7 +124,7 @@ const CryptocurrencyInfo = () => {
               <B>$ {low}</B>
             </Row>
           </Col>
-          <Col width="46%" minWidth="150px">
+          <Col width="46%" minWidth="160px">
             <Row>
               <Grey>AVERAGE </Grey>
               <B>{vwap24Hr}</B>
