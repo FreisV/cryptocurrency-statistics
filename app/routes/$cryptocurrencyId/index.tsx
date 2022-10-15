@@ -1,4 +1,5 @@
-import type { CryptocurrencyType } from "~/api/cryptocurrencies";
+import type { CryptocurrencyType, HistoryType } from "~/api/cryptocurrencies";
+import { getHistoryById } from "~/api/cryptocurrencies";
 import { getCryptocurrencyById } from "~/api/cryptocurrencies";
 import invariant from "tiny-invariant";
 import type { LoaderFunction } from "@remix-run/node";
@@ -6,12 +7,19 @@ import { useLoaderData } from "@remix-run/react";
 import { Col, GreenSpan, Main, RedSpan, Row } from "~/components/styles";
 import styled from "styled-components";
 import { reduceMoney, reduceNumber } from "~/utils/helpers/helpers";
+import Chart from "~/components/Chart";
+
+type LoaderType = {
+  cryptocurrency: CryptocurrencyType;
+  history: HistoryType[];
+};
 
 export const loader: LoaderFunction = async ({ params }) => {
   invariant(params.cryptocurrencyId, "expected params.cryptocurrencyId");
   const cryptocurrency = await getCryptocurrencyById(params.cryptocurrencyId);
+  const history = await getHistoryById(params.cryptocurrencyId);
 
-  return cryptocurrency;
+  return { cryptocurrency, history };
 };
 
 const Info = styled(Row)`
@@ -55,14 +63,38 @@ const B = styled.b`
 `;
 
 const CryptocurrencyInfo = () => {
-  const cryptocurrency = useLoaderData<CryptocurrencyType>();
+  const { cryptocurrency, history } = useLoaderData<LoaderType>();
 
   const vwap24Hr = cryptocurrency.vwap24Hr
-    ? reduceMoney(parseFloat(cryptocurrency.vwap24Hr))
-    : "null";
+    ? "$" + reduceMoney(parseFloat(cryptocurrency.vwap24Hr))
+    : "none";
   const changePercent24Hr = cryptocurrency.changePercent24Hr
     ? reduceNumber(parseFloat(cryptocurrency.changePercent24Hr))
-    : "null";
+    : "none";
+
+  const chartLabels = history.map((el) => {
+    const date = new Date(el.time);
+    const monthNames = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+
+    const hours = date.getHours();
+    const day = date.getDate();
+    const month = monthNames[date.getMonth()];
+
+    return `${day} ${month} ${hours}:00`;
+  });
 
   return (
     <Main>
@@ -80,15 +112,17 @@ const CryptocurrencyInfo = () => {
           <Col width="46%" minWidth="150px">
             <Row>
               <Grey>AVERAGE </Grey>
-              <B>${vwap24Hr}</B>
+              <B>{vwap24Hr}</B>
             </Row>
             <Row>
               <Grey>CHANGE</Grey>
               <B>
-                {changePercent24Hr > 0 ? (
-                  <GreenSpan>{changePercent24Hr}%</GreenSpan>
+                {typeof(changePercent24Hr) !== "number" ? (
+                  "none"
+                ) : changePercent24Hr > 0 ? (
+                  <GreenSpan>{changePercent24Hr} %</GreenSpan>
                 ) : changePercent24Hr < 0 ? (
-                  <RedSpan>{changePercent24Hr}%</RedSpan>
+                  <RedSpan>{changePercent24Hr} %</RedSpan>
                 ) : (
                   { changePercent24Hr } + "%"
                 )}
@@ -97,6 +131,11 @@ const CryptocurrencyInfo = () => {
           </Col>
         </InfoBlock>
       </Info>
+      <Chart
+        name={cryptocurrency.name}
+        labels={chartLabels}
+        values={history.map((el) => parseFloat(el.priceUsd))}
+      />
     </Main>
   );
 };
