@@ -57,10 +57,12 @@ const B = styled.b`
 const CryptocurrencyInfo = () => {
   const cryptocurrency = useLoaderData<CryptocurrencyType>();
 
-  const vwap24Hr = reduceMoney(parseFloat(cryptocurrency.vwap24Hr));
-  const changePercent24Hr = reduceNumber(
-    parseFloat(cryptocurrency.changePercent24Hr)
-  );
+  const vwap24Hr = cryptocurrency.vwap24Hr
+    ? reduceMoney(parseFloat(cryptocurrency.vwap24Hr))
+    : "null";
+  const changePercent24Hr = cryptocurrency.changePercent24Hr
+    ? reduceNumber(parseFloat(cryptocurrency.changePercent24Hr))
+    : "null";
 
   return (
     <Main>
