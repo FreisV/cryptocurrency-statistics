@@ -66,11 +66,16 @@ const CryptocurrencyInfo = () => {
   const { cryptocurrency, history } = useLoaderData<LoaderType>();
 
   const vwap24Hr = cryptocurrency.vwap24Hr
-    ? "$" + reduceMoney(parseFloat(cryptocurrency.vwap24Hr))
+    ? "$ " + reduceMoney(parseFloat(cryptocurrency.vwap24Hr))
     : "none";
   const changePercent24Hr = cryptocurrency.changePercent24Hr
     ? reduceNumber(parseFloat(cryptocurrency.changePercent24Hr))
     : "none";
+
+  const allPrices = history.map((el) => parseFloat(el.priceUsd));
+
+  const high = reduceMoney(Math.max(...allPrices));
+  const low = reduceMoney(Math.min(...allPrices));
 
   const chartLabels = history.map((el) => {
     const date = new Date(el.time);
@@ -106,8 +111,14 @@ const CryptocurrencyInfo = () => {
 
         <InfoBlock>
           <Col width="46%" minWidth="150px">
-            <Grey>HIGH</Grey>
-            <Grey>LOW</Grey>
+            <Row>
+              <Grey>HIGH</Grey>
+              <B>$ {high}</B>
+            </Row>
+            <Row>
+              <Grey>LOW</Grey>
+              <B>$ {low}</B>
+            </Row>
           </Col>
           <Col width="46%" minWidth="150px">
             <Row>
@@ -117,7 +128,7 @@ const CryptocurrencyInfo = () => {
             <Row>
               <Grey>CHANGE</Grey>
               <B>
-                {typeof(changePercent24Hr) !== "number" ? (
+                {typeof changePercent24Hr !== "number" ? (
                   "none"
                 ) : changePercent24Hr > 0 ? (
                   <GreenSpan>{changePercent24Hr} %</GreenSpan>
