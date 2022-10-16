@@ -7,8 +7,9 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
-import { createGlobalStyle } from "styled-components";
+import { Provider } from "react-redux";
 import { Global } from "./components/styles";
+import { store } from "./store";
 
 export const links: LinksFunction = () => {
   return [
@@ -45,7 +46,9 @@ export default function App() {
       </head>
       <body>
         <Global />
-        <Outlet />
+        <Provider store={store}>
+          <Outlet />
+        </Provider>
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
