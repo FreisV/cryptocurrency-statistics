@@ -1,8 +1,13 @@
 import { Link } from "@remix-run/react";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import type { CryptocurrencyType } from "~/api/cryptocurrencies";
+import { useTypedSelector } from "~/hooks/useTypedSelector";
 import { reduceNumber, reduceMoney } from "../utils/helpers/helpers";
 import { GreenSpan, RedSpan } from "./styles";
+
+import {CryptocurrencyInBriefcaseType } from "~/types/briefcase";
+import { addCryptocurrency } from "~/store/reducers/briefcaseReducer";
 
 type CryptocurrencyTableProps = {
   cryptocurrencies: CryptocurrencyType[];
@@ -51,9 +56,31 @@ const StyledLink = styled(Link)`
   text-decoration: none;
 `;
 
+const Add = styled.span`
+  font-size: 1.5em;
+  font-weight: 300;
+  transition: font-size 100ms;
+
+  &:hover {
+    font-size: 2em;
+    cursor: pointer;
+  }
+`
+
 const CryptocurrencyTable = ({
   cryptocurrencies,
 }: CryptocurrencyTableProps) => {
+  const briefcase = useTypedSelector(state => state.briefcase)
+  const dispatch = useDispatch();
+
+  const addInBriefcase = (cryptocurrency:CryptocurrencyType, quantity:number = 1) => {
+    const purchasePrice = quantity * parseFloat(cryptocurrency.priceUsd || '0');
+    console.log(briefcase);
+    dispatch(addCryptocurrency({cryptocurrency, quantity, purchasePrice}));
+    console.log(briefcase);
+    
+  }
+
   return (
     <Table>
       <thead>
@@ -66,6 +93,7 @@ const CryptocurrencyTable = ({
           <Th>Supply</Th>
           <Th>Volume(24Hr)</Th>
           <Th>Change(24Hr)</Th>
+          <Th></Th>
         </tr>
       </thead>
       <tbody>
@@ -138,6 +166,7 @@ const CryptocurrencyTable = ({
                 )}
               </StyledLink>
             </Td>
+            <Td align="center" onClick={() => addInBriefcase(cryptocurrency)}><Add>+</Add></Td>
           </Tr>
         ))}
       </tbody>
