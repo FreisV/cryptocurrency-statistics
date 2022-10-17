@@ -16,7 +16,8 @@ import {
 
 type AddCryptocurrencyModalProps = {
   cryptocurrency: CryptocurrencyType;
-  hide: boolean;
+  isHide: boolean;
+  setIsHide: (a: boolean) => void;
 }
 
 const InfoSpan = styled.span`
@@ -32,8 +33,7 @@ const StyledCol = styled(Col)`
   }
 `
 
-const AddCryptocurrencyModal = ({cryptocurrency, hide = true}: AddCryptocurrencyModalProps) => {
-  const [isHide, setIsHide] = useState(hide)
+const AddCryptocurrencyModal = ({cryptocurrency, isHide, setIsHide}: AddCryptocurrencyModalProps) => {
   const [sum, setSum] = useState(0);
   const name = cryptocurrency.name;
   const price = cryptocurrency.priceUsd === null ? 0 : reduceMoney(parseFloat(cryptocurrency.priceUsd || '0'))
