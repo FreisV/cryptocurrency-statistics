@@ -1,55 +1,11 @@
-import styled from "styled-components";
 import type { CryptocurrencyType } from "~/api/cryptocurrencies";
 import { reduceMoney } from "~/utils/helpers/helpers";
-import { Row, StyledHeader } from "./styles";
-import { Link } from "@remix-run/react";
+import { Briefcase, Cryptocurrencies, Cryptocurrency, Logo, Nav, Row, StyledHeader, StyledLink } from "./styles";
 
 
 type HeaderProps = {
   topThree: CryptocurrencyType[];
 }
-
-const Logo = styled.h1`
-  margin: 10px 30px;
-  padding: 2px;
-  border: 2px solid black;
-  border-radius: 4px;
-  text-decoration: none;
-`;
-
-const StyledLink = styled(Link)`
-  color: #3b3b3b;
-  text-decoration: none;
-`;
-
-const Nav = styled.nav`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-`
-
-const Profile = styled.span`
-  padding: 10px 30px;
-  font-size: 1.2em;
-  font-weight: 500;
-  align-self: right;
-`;
-
-const Cryptocurrencies = styled(Row)`
-
-  @media (max-width: 600px) {
-    display: none;
-  }
-`
-
-const Cryptocurrency = styled.span`
-  padding: 15px;
-  font-size: 0.95em;
-`;
-
-
-
 
 const Header = ({topThree}: HeaderProps) => {
   return (
@@ -61,12 +17,12 @@ const Header = ({topThree}: HeaderProps) => {
             {topThree && topThree.map((cryptocurrency) => (
               <Cryptocurrency key={cryptocurrency.id}>
                 <StyledLink to={'/'+cryptocurrency.id} prefetch="intent">
-                  {cryptocurrency.symbol}: ${reduceMoney(parseFloat(cryptocurrency.priceUsd))}
+                  {cryptocurrency.symbol}: ${reduceMoney(parseFloat(cryptocurrency.priceUsd || '0'))}
                 </StyledLink>
               </Cryptocurrency>
             ))}
           </Cryptocurrencies>
-          <Profile>Портфель</Profile>
+          <Briefcase>Briefcase</Briefcase>
         </Nav>
       </Row>
     </StyledHeader>

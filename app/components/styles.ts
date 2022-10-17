@@ -1,4 +1,4 @@
-import { Form } from "@remix-run/react";
+import { Form, Link } from "@remix-run/react";
 import styled, { createGlobalStyle } from "styled-components";
 
 export const Global = createGlobalStyle`
@@ -168,3 +168,42 @@ export const Button = styled.button`
     
   }
 `
+
+export const Logo = styled.h1`
+  margin: 10px 30px;
+  padding: 2px;
+  border: 2px solid black;
+  border-radius: 4px;
+  text-decoration: none;
+`;
+
+export const StyledLink = styled(Link)`
+  color: #3b3b3b;
+  text-decoration: none;
+`;
+
+export const Nav = styled.nav`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`
+
+export const Briefcase = styled.span`
+  padding: 10px 30px;
+  font-size: 1.2em;
+  font-weight: 500;
+  align-self: right;
+`;
+
+export const Cryptocurrencies = styled(Row)`
+
+  @media (max-width: 600px) {
+    display: none;
+  }
+`
+
+export const Cryptocurrency = styled.span`
+  padding: 15px;
+  font-size: 0.95em;
+`;
