@@ -8,12 +8,14 @@ import {
   B,
   Button,
   Col,
+  InfoSpan,
   Modal,
   ModalBody,
   ModalContent,
   ModalForm,
   ModalHeader,
   NumberInput,
+  StyledCol,
 } from "./styles";
 
 type AddCryptocurrencyModalProps = {
@@ -22,29 +24,21 @@ type AddCryptocurrencyModalProps = {
   setIsHide: (a: boolean) => void;
 }
 
-const InfoSpan = styled.span`
-  margin: 10px;
-`
-
-const StyledCol = styled(Col)`
-  margin: 10px 0 10px 0;
-
-  & > * {
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-`
 
 const AddCryptocurrencyModal = ({cryptocurrency, isHide, setIsHide}: AddCryptocurrencyModalProps) => {
   const [quantity, setQuantity] = useState(0);
   const [sum, setSum] = useState(0);
   const name = cryptocurrency.name;
-  const price = cryptocurrency.priceUsd === null ? 0 : reduceMoney(parseFloat(cryptocurrency.priceUsd || '0'))
+  const price = cryptocurrency.priceUsd === null ? 0 : reduceMoney(parseFloat(cryptocurrency.priceUsd))
   const dispatch = useDispatch();
   
   useEffect(() => {
     setSum(quantity *  parseFloat(cryptocurrency.priceUsd || '0'));
-  }, [cryptocurrency.priceUsd, quantity])
+  }, [cryptocurrency, quantity])
+
+  useEffect(() => {
+    setQuantity(0)
+  },[cryptocurrency, isHide])
 
   const addInBriefcase = (cryptocurrency:CryptocurrencyType, quantity:number) => {
     const purchasePrice = quantity * parseFloat(cryptocurrency.priceUsd || '0');
@@ -65,7 +59,7 @@ const AddCryptocurrencyModal = ({cryptocurrency, isHide, setIsHide}: AddCryptocu
             <InfoSpan><B>Cryptocurrency: </B> {name}</InfoSpan>
             <InfoSpan><B>Price: </B>$ {price}</InfoSpan>
             <ModalForm onSubmit={() => addInBriefcase(cryptocurrency, quantity)}>
-              <StyledCol width="100%">
+              <StyledCol>
                 <NumberInput
                   type="number"
                   step="any"
