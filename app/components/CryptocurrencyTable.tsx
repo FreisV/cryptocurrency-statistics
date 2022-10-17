@@ -1,11 +1,9 @@
 import { Link } from "@remix-run/react";
-import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import type { CryptocurrencyType } from "~/api/cryptocurrencies";
 import { useTypedSelector } from "~/hooks/useTypedSelector";
 import { reduceNumber, reduceMoney } from "../utils/helpers/helpers";
 import { GreenSpan, RedSpan } from "./styles";
-import { addCryptocurrency } from "~/store/reducers/briefcaseReducer";
 import { useState } from "react";
 import AddCryptocurrencyModal from "./AddCryptocurrencyModal";
 
@@ -74,12 +72,6 @@ const CryptocurrencyTable = ({
   const [isHide, setIsHide] = useState(true);
 
   const briefcase = useTypedSelector(state => state.briefcase)
-  const dispatch = useDispatch();
-
-  const addInBriefcase = (cryptocurrency:CryptocurrencyType, quantity:number = 1) => {
-    const purchasePrice = quantity * parseFloat(cryptocurrency.priceUsd || '0');
-    dispatch(addCryptocurrency({cryptocurrency, quantity, purchasePrice}));
-  }
 
   return (
     <Table>
