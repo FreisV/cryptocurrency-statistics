@@ -4,10 +4,25 @@ import { getCryptocurrencyById } from "~/api/cryptocurrencies";
 import invariant from "tiny-invariant";
 import type { LoaderFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
-import { B, Col, GreenSpan, Main, RedSpan, Row } from "~/components/styles";
+import {
+  B,
+  Button,
+  Col,
+  GreenSpan,
+  Grey,
+  H2,
+  Info,
+  InfoBlock,
+  Main,
+  RedSpan,
+  Row,
+  Symbol,
+} from "~/components/styles";
 import styled from "styled-components";
 import { reduceMoney, reduceNumber } from "~/utils/helpers/helpers";
 import Chart from "~/components/Chart";
+import AddCryptocurrencyModal from "~/components/AddCryptocurrencyModal";
+import { useState } from "react";
 
 type LoaderType = {
   cryptocurrency: CryptocurrencyType;
@@ -22,53 +37,28 @@ export const loader: LoaderFunction = async ({ params }) => {
   return { cryptocurrency, history };
 };
 
-const Info = styled(Row)`
+const AdaptiveRow = styled(Row)`
   width: 100%;
-  border-color: white;
-  padding: 2em;
-
-  -webkit-box-shadow: 0px 0px 27px 2px rgba(34, 60, 80, 0.2);
-  -moz-box-shadow: 0px 0px 27px 2px rgba(34, 60, 80, 0.2);
-  box-shadow: 0px 0px 27px 2px rgba(34, 60, 80, 0.2);
 
   @media (max-width: 600px) {
     flex-direction: column;
   }
 `;
 
-const H2 = styled.h2`
-  font-size: 1.5em;
-  font-weight: 500;
-`;
-
-const Symbol = styled.span`
-  padding: 5px 0 40px 0;
-  font-size: 1em;
-`;
-
-const InfoBlock = styled(Row)`
-  width: 60%;
-  max-width: 350px;
-  height: 80px;
-
-  @media (max-width: 600px) {
-    width: 100%;
-  }
-`;
-
-const Grey = styled.span`
-  font-weight: 500;
-  color: grey;
-  text-transform: uppercase;
-`;
+const Btn = styled(Button)`
+  width: fit-content;
+  margin: 0;
+  font-size: 1.2em;
+`
 
 const CryptocurrencyInfo = () => {
   const { cryptocurrency, history } = useLoaderData<LoaderType>();
+  const [modalIsHide, setModalIsHide] = useState(true);
 
   if (!cryptocurrency) {
     return null;
   }
-  
+
   const vwap24Hr = cryptocurrency.vwap24Hr
     ? "$ " + reduceMoney(parseFloat(cryptocurrency.vwap24Hr))
     : "none";
@@ -77,10 +67,9 @@ const CryptocurrencyInfo = () => {
     : "none";
 
   const allPrices = history.map((el) => parseFloat(el.priceUsd));
-
   const high = reduceMoney(Math.max(...allPrices));
   const low = reduceMoney(Math.min(...allPrices));
-
+    
   const chartLabels = history.map((el) => {
     const date = new Date(el.time);
     const monthNames = [
@@ -107,44 +96,52 @@ const CryptocurrencyInfo = () => {
 
   return (
     <Main>
+      <AddCryptocurrencyModal
+        cryptocurrency={cryptocurrency}
+        isHide={modalIsHide}
+        setIsHide={setModalIsHide}
+      />
       <Info wrap="wrap">
-        <Col justify="start">
-          <H2>{cryptocurrency.name}</H2>
-          <Symbol>{cryptocurrency.symbol}</Symbol>
-        </Col>
+        <AdaptiveRow>
+          <Col justify="start">
+            <H2>{cryptocurrency.name}</H2>
+            <Symbol>{cryptocurrency.symbol}</Symbol>
+          </Col>
 
-        <InfoBlock>
-          <Col width="46%" minWidth="140px">
-            <Row>
-              <Grey>HIGH</Grey>
-              <B>$ {high}</B>
-            </Row>
-            <Row>
-              <Grey>LOW</Grey>
-              <B>$ {low}</B>
-            </Row>
-          </Col>
-          <Col width="46%" minWidth="160px">
-            <Row>
-              <Grey>AVERAGE </Grey>
-              <B>{vwap24Hr}</B>
-            </Row>
-            <Row>
-              <Grey>CHANGE</Grey>
-              <B>
-                {typeof changePercent24Hr !== "number" ? (
-                  "none"
-                ) : changePercent24Hr > 0 ? (
-                  <GreenSpan>{changePercent24Hr} %</GreenSpan>
-                ) : changePercent24Hr < 0 ? (
-                  <RedSpan>{changePercent24Hr} %</RedSpan>
-                ) : (
-                  { changePercent24Hr } + "%"
-                )}
-              </B>
-            </Row>
-          </Col>
-        </InfoBlock>
+          <InfoBlock>
+            <Col width="46%" minWidth="140px">
+              <Row>
+                <Grey>HIGH</Grey>
+                <B>$ {high}</B>
+              </Row>
+              <Row>
+                <Grey>LOW</Grey>
+                <B>$ {low}</B>
+              </Row>
+            </Col>
+            <Col width="46%" minWidth="160px">
+              <Row>
+                <Grey>AVERAGE </Grey>
+                <B>{vwap24Hr}</B>
+              </Row>
+              <Row>
+                <Grey>CHANGE</Grey>
+                <B>
+                  {typeof changePercent24Hr !== "number" ? (
+                    "none"
+                  ) : changePercent24Hr > 0 ? (
+                    <GreenSpan>{changePercent24Hr} %</GreenSpan>
+                  ) : changePercent24Hr < 0 ? (
+                    <RedSpan>{changePercent24Hr} %</RedSpan>
+                  ) : (
+                    { changePercent24Hr } + "%"
+                  )}
+                </B>
+              </Row>
+            </Col>
+          </InfoBlock>
+        </AdaptiveRow>
+        <Btn onClick={() => setModalIsHide(false)}>Add into briefcase</Btn>
       </Info>
       <Chart
         name={cryptocurrency.name}
