@@ -58,7 +58,7 @@ const AddCryptocurrencyModal = ({cryptocurrency, isHide, setIsHide}: AddCryptocu
           <Col>
             <InfoSpan><B>Cryptocurrency: </B> {name}</InfoSpan>
             <InfoSpan><B>Price: </B>$ {price}</InfoSpan>
-            <ModalForm onSubmit={() => addInBriefcase(cryptocurrency, quantity)}>
+            <ModalForm onSubmit={() => {addInBriefcase(cryptocurrency, quantity); setIsHide(true)}}>
               <StyledCol>
                 <NumberInput
                   type="number"
