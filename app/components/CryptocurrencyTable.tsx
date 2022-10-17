@@ -1,7 +1,6 @@
 import { Link } from "@remix-run/react";
 import styled from "styled-components";
 import type { CryptocurrencyType } from "~/api/cryptocurrencies";
-import { useTypedSelector } from "~/hooks/useTypedSelector";
 import { reduceNumber, reduceMoney } from "../utils/helpers/helpers";
 import { GreenSpan, RedSpan } from "./styles";
 import { useState } from "react";
@@ -70,8 +69,6 @@ const CryptocurrencyTable = ({
 }: CryptocurrencyTableProps) => {
   const [currentCryptocurrency, setCurrentCryptocurrency] = useState(cryptocurrencies[0])
   const [isHide, setIsHide] = useState(true);
-
-  const briefcase = useTypedSelector(state => state.briefcase)
 
   return (
     <Table>
