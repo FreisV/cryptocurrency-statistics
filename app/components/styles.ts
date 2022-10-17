@@ -1,3 +1,4 @@
+import { Form } from "@remix-run/react";
 import styled, { createGlobalStyle } from "styled-components";
 
 export const Global = createGlobalStyle`
@@ -23,6 +24,10 @@ export const Main = styled.main`
   align-items: center;
   max-width: 1440px;
   width: 95%;
+`;
+
+export const B = styled.b`
+  font-weight: 500;
 `;
 
 export const RedSpan = styled.span`
@@ -90,3 +95,76 @@ export const StyledHeader = styled.header`
   -moz-box-shadow: 0px 4px 27px 2px rgba(34, 60, 80, 0.17);
   box-shadow: 0px 4px 27px 2px rgba(34, 60, 80, 0.17);
 `;
+
+export const Modal = styled.div`
+height: 100%;
+width : 100%;
+position: fixed;
+top: 0;
+right: 0;
+bottom: 0;
+left: 0;
+background-color: rgba(0,0,0,0.5);
+display: flex;
+align-items: center;
+justify-content: center;
+`
+
+export const ModalContent = styled.div`
+  max-width: 500px;
+  width: 95%;
+  background-color: white;
+  border-radius: 5px;
+`
+
+export const ModalHeader = styled.div`
+  padding: 1em;
+  border-bottom: 1px solid #c4c4c4;
+`
+
+export const ModalBody = styled.div`
+  width: 100%;
+  padding: 1em;
+  `
+
+export const ModalForm = styled(Form)`
+  width: 100%;
+`
+
+export const NumberInput = styled.input`
+  width: inherit;
+  padding: 5px 10px;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid black;
+  font-size: 1em;
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;  
+  }
+`
+
+export const Button = styled.button`
+  padding: 5px 10px;
+  margin: 0 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(34, 130, 255);
+  color: white;
+  font-weight: 500;
+  font-size: 0.9em;
+  transition: background-color 300ms;
+
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    background-color: rgb(80, 156, 255);
+    cursor: pointer;
+    
+  }
+`
