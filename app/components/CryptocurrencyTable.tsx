@@ -5,8 +5,6 @@ import type { CryptocurrencyType } from "~/api/cryptocurrencies";
 import { useTypedSelector } from "~/hooks/useTypedSelector";
 import { reduceNumber, reduceMoney } from "../utils/helpers/helpers";
 import { GreenSpan, RedSpan } from "./styles";
-
-import {CryptocurrencyInBriefcaseType } from "~/types/briefcase";
 import { addCryptocurrency } from "~/store/reducers/briefcaseReducer";
 
 type CryptocurrencyTableProps = {
@@ -75,10 +73,7 @@ const CryptocurrencyTable = ({
 
   const addInBriefcase = (cryptocurrency:CryptocurrencyType, quantity:number = 1) => {
     const purchasePrice = quantity * parseFloat(cryptocurrency.priceUsd || '0');
-    console.log(briefcase);
     dispatch(addCryptocurrency({cryptocurrency, quantity, purchasePrice}));
-    console.log(briefcase);
-    
   }
 
   return (
