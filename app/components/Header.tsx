@@ -1,5 +1,7 @@
+import { useState } from "react";
 import type { CryptocurrencyType } from "~/api/cryptocurrencies";
 import { reduceMoney } from "~/utils/helpers/helpers";
+import BriefcaseModal from "./BriefcaseModal";
 import { Briefcase, Cryptocurrencies, Cryptocurrency, Logo, Nav, Row, StyledHeader, StyledLink } from "./styles";
 
 
@@ -8,8 +10,11 @@ type HeaderProps = {
 }
 
 const Header = ({topThree}: HeaderProps) => {
+  const [briefcaseHide, setIsBriefcaseHide] = useState(true);
+  
   return (
     <StyledHeader>
+      <BriefcaseModal isHide={briefcaseHide} setIsHide={setIsBriefcaseHide}/>
       <Row justify="space-between" align="center" maxWidth="1440px" width="100%">
         <Logo><StyledLink to="/" prefetch="render">CoinCap</StyledLink></Logo>
         <Nav>
@@ -22,7 +27,7 @@ const Header = ({topThree}: HeaderProps) => {
               </Cryptocurrency>
             ))}
           </Cryptocurrencies>
-          <Briefcase>Briefcase</Briefcase>
+          <Briefcase onClick={() => setIsBriefcaseHide(false)}>Briefcase</Briefcase>
         </Nav>
       </Row>
     </StyledHeader>
