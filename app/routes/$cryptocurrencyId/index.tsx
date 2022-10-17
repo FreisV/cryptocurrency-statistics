@@ -65,6 +65,10 @@ const Grey = styled.span`
 const CryptocurrencyInfo = () => {
   const { cryptocurrency, history } = useLoaderData<LoaderType>();
 
+  if (!cryptocurrency) {
+    return null;
+  }
+  
   const vwap24Hr = cryptocurrency.vwap24Hr
     ? "$ " + reduceMoney(parseFloat(cryptocurrency.vwap24Hr))
     : "none";
