@@ -113,6 +113,7 @@ justify-content: center;
 export const ModalContent = styled.div`
   max-width: 500px;
   width: 95%;
+  max-height: 610px;
   background-color: white;
   border-radius: 5px;
 `
@@ -124,8 +125,10 @@ export const ModalHeader = styled.div`
 
 export const ModalBody = styled.div`
   width: 100%;
+  max-height: 558px;
   padding: 1em;
-  `
+  overflow: auto;
+`
 
 export const ModalForm = styled(Form)`
   width: 100%;
@@ -157,7 +160,6 @@ export const Button = styled.button`
   font-size: 0.9em;
   transition: background-color 300ms;
 
-
   &:focus {
     outline: none;
   }
@@ -166,6 +168,20 @@ export const Button = styled.button`
     background-color: rgb(80, 156, 255);
     cursor: pointer;
     
+  }
+`
+
+export const InfoSpan = styled.span`
+  margin: 10px;
+`
+
+export const StyledCol = styled(Col)`
+  width: 100%;
+  margin: 10px 0 10px 0;
+
+  & > * {
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
 `
 
@@ -194,6 +210,10 @@ export const Briefcase = styled.span`
   font-size: 1.2em;
   font-weight: 500;
   align-self: right;
+
+  &:hover {
+    cursor:pointer;
+  }
 `;
 
 export const Cryptocurrencies = styled(Row)`
