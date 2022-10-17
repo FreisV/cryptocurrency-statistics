@@ -6,6 +6,8 @@ import { useTypedSelector } from "~/hooks/useTypedSelector";
 import { reduceNumber, reduceMoney } from "../utils/helpers/helpers";
 import { GreenSpan, RedSpan } from "./styles";
 import { addCryptocurrency } from "~/store/reducers/briefcaseReducer";
+import { useState } from "react";
+import AddCryptocurrencyModal from "./AddCryptocurrencyModal";
 
 type CryptocurrencyTableProps = {
   cryptocurrencies: CryptocurrencyType[];
@@ -68,6 +70,9 @@ const Add = styled.span`
 const CryptocurrencyTable = ({
   cryptocurrencies,
 }: CryptocurrencyTableProps) => {
+  const [currentCryptocurrency, setCurrentCryptocurrency] = useState(cryptocurrencies[0])
+  const [isHide, setIsHide] = useState(true);
+
   const briefcase = useTypedSelector(state => state.briefcase)
   const dispatch = useDispatch();
 
@@ -78,6 +83,7 @@ const CryptocurrencyTable = ({
 
   return (
     <Table>
+      <AddCryptocurrencyModal cryptocurrency={currentCryptocurrency} isHide={isHide} setIsHide={setIsHide}/>
       <thead>
         <tr>
           <Th align="left">#</Th>
@@ -161,7 +167,7 @@ const CryptocurrencyTable = ({
                 )}
               </StyledLink>
             </Td>
-            <Td align="center" onClick={() => addInBriefcase(cryptocurrency)}><Add>+</Add></Td>
+            <Td align="center" onClick={() => {setCurrentCryptocurrency(cryptocurrency); setIsHide(false)}}><Add>+</Add></Td>
           </Tr>
         ))}
       </tbody>
