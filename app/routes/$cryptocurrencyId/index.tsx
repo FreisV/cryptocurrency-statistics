@@ -4,7 +4,7 @@ import { getCryptocurrencyById } from "~/api/cryptocurrencies";
 import invariant from "tiny-invariant";
 import type { LoaderFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
-import { Col, GreenSpan, Main, RedSpan, Row } from "~/components/styles";
+import { B, Col, GreenSpan, Main, RedSpan, Row } from "~/components/styles";
 import styled from "styled-components";
 import { reduceMoney, reduceNumber } from "~/utils/helpers/helpers";
 import Chart from "~/components/Chart";
@@ -60,10 +60,6 @@ const Grey = styled.span`
   font-weight: 500;
   color: grey;
   text-transform: uppercase;
-`;
-
-const B = styled.b`
-  font-weight: 500;
 `;
 
 const CryptocurrencyInfo = () => {
