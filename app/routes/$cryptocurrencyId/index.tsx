@@ -23,7 +23,7 @@ import { reduceMoney, reduceNumber } from "~/utils/helpers/helpers";
 import Chart from "~/components/Chart";
 import AddCryptocurrencyModal from "~/components/AddCryptocurrencyModal";
 import { useEffect, useState } from "react";
-import { CryptocurrencyInBriefcaseType } from "~/types/briefcase";
+import type { CryptocurrencyInBriefcaseType } from "~/types/briefcase";
 import { useTypedSelector } from "~/hooks/useTypedSelector";
 import { useDispatch } from "react-redux";
 import { updateCryptocurrencies } from "~/store/reducers/briefcaseReducer";
@@ -178,7 +178,3 @@ const CryptocurrencyInfo = () => {
 };
 
 export default CryptocurrencyInfo;
-function dispatch(arg0: any): any {
-  throw new Error("Function not implemented.");
-}
-
