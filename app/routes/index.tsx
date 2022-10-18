@@ -4,7 +4,7 @@ import { getTopThreeCryptocurrencies } from "~/api/cryptocurrencies";
 import { getCryptocurrencies } from "~/api/cryptocurrencies";
 import type { LoaderFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
-import { Main, Wrapper } from "~/components/styles";
+import { AutoOverflow, Main, Wrapper } from "~/components/styles";
 import Header from "~/components/Header";
 import Pagination from "~/components/Pagination";
 
@@ -32,7 +32,9 @@ const Index = () => {
       <Header topThree={topThree} />
       <Main>
         <Pagination currentPage={page} />
-        <CryptocurrencyTable cryptocurrencies={cryptocurrencies} />
+        <AutoOverflow>
+          <CryptocurrencyTable cryptocurrencies={cryptocurrencies} />
+        </AutoOverflow>
         <Pagination currentPage={page} />
       </Main>
     </Wrapper>

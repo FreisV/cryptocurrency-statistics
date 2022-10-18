@@ -11,7 +11,7 @@ type CryptocurrencyTableProps = {
 };
 
 const Table = styled.table`
-  width: 95%;
+  width: 100%;
   border-spacing: 0px;
 `;
 

@@ -263,3 +263,8 @@ export const Grey = styled.span`
   color: grey;
   text-transform: uppercase;
 `;
+
+export const AutoOverflow = styled.div` 
+  width: 100%;
+  overflow: auto;
+`
