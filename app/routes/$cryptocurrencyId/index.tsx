@@ -92,8 +92,8 @@ const CryptocurrencyInfo = () => {
     : "none";
 
   const allPrices = history.map((el) => parseFloat(el.priceUsd));
-  const high = reduceMoney(Math.max(...allPrices));
-  const low = reduceMoney(Math.min(...allPrices));
+  const high = allPrices.length === 0 ? 0 : reduceMoney(Math.max(...allPrices));
+  const low = allPrices.length === 0 ? 0 : reduceMoney(Math.min(...allPrices));
     
   const chartLabels = history.map((el) => {
     const date = new Date(el.time);
