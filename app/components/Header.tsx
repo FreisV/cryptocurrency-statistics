@@ -84,7 +84,7 @@ const Header = ({ topThree }: HeaderProps) => {
                 <GreenSpan>
                   + ${reduceMoney(costDifference)} ({percentageDifference} %)
                 </GreenSpan>
-              ) : costDifference > 0 ? (
+              ) : costDifference < 0 ? (
                 <RedSpan>
                   - ${reduceMoney(Math.abs(costDifference))} (
                   {percentageDifference} %)
