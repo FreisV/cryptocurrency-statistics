@@ -1,4 +1,4 @@
-import { CryptocurrencyType } from "~/api/cryptocurrencies";
+import type { CryptocurrencyType } from "~/api/cryptocurrencies";
 import type {
   AddCryptocurrencyAction,
   BriefcaseAction,
