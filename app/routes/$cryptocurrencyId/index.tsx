@@ -22,7 +22,11 @@ import styled from "styled-components";
 import { reduceMoney, reduceNumber } from "~/utils/helpers/helpers";
 import Chart from "~/components/Chart";
 import AddCryptocurrencyModal from "~/components/AddCryptocurrencyModal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { CryptocurrencyInBriefcaseType } from "~/types/briefcase";
+import { useTypedSelector } from "~/hooks/useTypedSelector";
+import { useDispatch } from "react-redux";
+import { updateCryptocurrencies } from "~/store/reducers/briefcaseReducer";
 
 type LoaderType = {
   cryptocurrency: CryptocurrencyType;
@@ -54,6 +58,27 @@ const Btn = styled(Button)`
 const CryptocurrencyInfo = () => {
   const { cryptocurrency, history } = useLoaderData<LoaderType>();
   const [modalIsHide, setModalIsHide] = useState(true);
+
+  
+
+  const briefcase = useTypedSelector((state) => state.briefcase.briefcase);
+  const dispatch = useDispatch();
+
+
+  useEffect(() => {
+    const getUpdatedData = async (
+      briefcase: CryptocurrencyInBriefcaseType[]
+    ) => {
+      const updatedData = await Promise.all(
+        briefcase.map((el) => getCryptocurrencyById(el.cryptocurrency.id))
+      );
+      return updatedData;
+    };
+    const updatedData = getUpdatedData(briefcase);
+    updatedData.then((briefcase) =>
+      dispatch(updateCryptocurrencies(briefcase))
+    );
+  }, []);
 
   if (!cryptocurrency) {
     return null;
@@ -153,3 +178,7 @@ const CryptocurrencyInfo = () => {
 };
 
 export default CryptocurrencyInfo;
+function dispatch(arg0: any): any {
+  throw new Error("Function not implemented.");
+}
+
