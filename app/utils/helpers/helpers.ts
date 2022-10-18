@@ -10,7 +10,9 @@ const getPrecision = (num: number) => {
 } 
 
 export const reduceMoney = (num: number) => {
-  if (num >= 1000000000) {
+  if (num === 0) {
+    return 0;
+  } else if (num >= 1000000000) {
     return Math.round(num / 10000000) / 100 + "b";
   } else if (num >= 1000000) {
     return Math.round(num / 10000) / 100 + "m";
