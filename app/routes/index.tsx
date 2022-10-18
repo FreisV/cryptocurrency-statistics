@@ -1,5 +1,6 @@
 import CryptocurrencyTable from "~/components/CryptocurrencyTable";
 import type { CryptocurrencyType } from "~/api/cryptocurrencies";
+import { getCryptocurrencyById } from "~/api/cryptocurrencies";
 import { getTopThreeCryptocurrencies } from "~/api/cryptocurrencies";
 import { getCryptocurrencies } from "~/api/cryptocurrencies";
 import type { LoaderFunction } from "@remix-run/node";
@@ -7,6 +8,11 @@ import { useLoaderData } from "@remix-run/react";
 import { AutoOverflow, Main, Wrapper } from "~/components/styles";
 import Header from "~/components/Header";
 import Pagination from "~/components/Pagination";
+import type { CryptocurrencyInBriefcaseType } from "~/types/briefcase";
+import { useEffect } from "react";
+import { useTypedSelector } from "~/hooks/useTypedSelector";
+import { useDispatch } from "react-redux";
+import { updateCryptocurrencies } from "~/store/reducers/briefcaseReducer";
 
 type LoaderType = {
   cryptocurrencies: CryptocurrencyType[];
@@ -26,6 +32,23 @@ export const loader: LoaderFunction = async ({ request }) => {
 
 const Index = () => {
   const { cryptocurrencies, topThree, page } = useLoaderData<LoaderType>();
+  const briefcase = useTypedSelector((state) => state.briefcase.briefcase);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const getUpdatedData = async (
+      briefcase: CryptocurrencyInBriefcaseType[]
+    ) => {
+      const updatedData = await Promise.all(
+        briefcase.map((el) => getCryptocurrencyById(el.cryptocurrency.id))
+      );
+      return updatedData;
+    };
+    const updatedData = getUpdatedData(briefcase);
+    updatedData.then((briefcase) =>
+      dispatch(updateCryptocurrencies(briefcase))
+    );
+  }, []);
 
   return (
     <Wrapper>
