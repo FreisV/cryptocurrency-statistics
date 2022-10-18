@@ -53,10 +53,12 @@ const StyledLink = styled(Link)`
   text-decoration: none;
 `;
 
-const Add = styled.span`
+const Add = styled.button`
   font-size: 1.5em;
   font-weight: 300;
   transition: font-size 100ms;
+  border: none;
+  background-color: rgba(255,255,255,0);
 
   &:hover {
     font-size: 2em;
