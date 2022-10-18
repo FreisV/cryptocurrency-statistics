@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import styled from "styled-components";
 import type { CryptocurrencyType } from "~/api/cryptocurrencies";
 import { addCryptocurrency } from "~/store/reducers/briefcaseReducer";
 import { reduceMoney } from "~/utils/helpers/helpers";
@@ -63,6 +62,7 @@ const AddCryptocurrencyModal = ({cryptocurrency, isHide, setIsHide}: AddCryptocu
                 <NumberInput
                   type="number"
                   step="any"
+                  min={0}
                   placeholder="Amount of cryptocurrency"
                   onChange={e => setQuantity(Number(e.target.value))}
                 />

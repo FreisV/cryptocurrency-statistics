@@ -47,6 +47,7 @@ const BriefcaseModalItem = ({item} : BriefcaseModalItemProps) => {
           <NumberInput
             type="number"
             step="any"
+            min={0}
             placeholder="Amount of cryptocurrency"
             onChange={e => setQuantity(parseFloat(e.target.value))}
           />
