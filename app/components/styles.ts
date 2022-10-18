@@ -223,7 +223,7 @@ export const Cryptocurrencies = styled(Row)`
   }
 `
 
-export const Cryptocurrency = styled.span`
+export const HeaderSpan = styled.span`
   padding: 15px;
   font-size: 0.95em;
 `;
