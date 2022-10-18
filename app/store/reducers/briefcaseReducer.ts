@@ -125,7 +125,7 @@ export const briefcaseReducer = (
   }
 };
 
-export const addCryptocurrency = (payload: AddCryptocurrencyAction) => ({
+export const addCryptocurrency = (payload: CryptocurrencyInBriefcaseType) => ({
   type: BriefcaseActionTypes.ADD_CRYPTOCURRENCY,
   payload,
 });

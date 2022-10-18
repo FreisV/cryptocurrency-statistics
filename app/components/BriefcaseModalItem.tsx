@@ -27,8 +27,7 @@ const BriefcaseModalItem = ({item} : BriefcaseModalItemProps) => {
   const dispatch = useDispatch();
 
   const subtractFromBriefcase = (cryptocurrency:CryptocurrencyType, quantity:number) => {
-    const purchasePrice = quantity * parseFloat(cryptocurrency.priceUsd || '0');
-    dispatch(subtractCryptocurrency({cryptocurrency, quantity, purchasePrice}));
+    dispatch(subtractCryptocurrency({cryptocurrency, quantity}));
   }
 
   return (
