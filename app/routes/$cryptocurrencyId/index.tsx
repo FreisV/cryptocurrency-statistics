@@ -6,19 +6,12 @@ import type { LoaderFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import {
   B,
-  Button,
   Col,
   GreenSpan,
-  Grey,
-  H2,
-  Info,
-  InfoBlock,
   Main,
   RedSpan,
   Row,
-  Symbol,
 } from "~/components/styles";
-import styled from "styled-components";
 import { reduceMoney, reduceNumber } from "~/utils/helpers/helpers";
 import Chart from "~/components/Chart";
 import AddCryptocurrencyModal from "~/components/AddCryptocurrencyModal";
@@ -27,6 +20,7 @@ import type { CryptocurrencyInBriefcaseType } from "~/types/briefcase";
 import { useTypedSelector } from "~/hooks/useTypedSelector";
 import { useDispatch } from "react-redux";
 import { updateCryptocurrencies } from "~/store/reducers/briefcaseReducer";
+import { AdaptiveRow, Btn, Grey, H2, Symbol, Info, InfoBlock } from "~/components/cryptocurrencyIdStyles";
 
 type LoaderType = {
   cryptocurrency: CryptocurrencyType;
@@ -40,20 +34,6 @@ export const loader: LoaderFunction = async ({ params }) => {
 
   return { cryptocurrency, history };
 };
-
-const AdaptiveRow = styled(Row)`
-  width: 100%;
-
-  @media (max-width: 600px) {
-    flex-direction: column;
-  }
-`;
-
-const Btn = styled(Button)`
-  width: fit-content;
-  margin: 0;
-  font-size: 1.2em;
-`
 
 const CryptocurrencyInfo = () => {
   const { cryptocurrency, history } = useLoaderData<LoaderType>();
