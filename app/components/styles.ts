@@ -107,16 +107,6 @@ export const InfoSpan = styled.span`
   margin: 10px;
 `
 
-export const StyledCol = styled(Col)`
-  width: 100%;
-  margin: 10px 0 10px 0;
-
-  & > * {
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-`
-
 export const AutoOverflow = styled.div` 
   width: 100%;
   overflow: auto;

@@ -1,5 +1,6 @@
 import { Form } from "@remix-run/react"
 import styled from "styled-components"
+import { Col } from "./styles"
 
 export const Modal = styled.div`
 height: 100%;
@@ -51,5 +52,14 @@ export const NumberInput = styled.input`
   &::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;  
+  }
+`
+export const StyledCol = styled(Col)`
+  width: 100%;
+  margin: 10px 0 10px 0;
+
+  & > * {
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
 `
