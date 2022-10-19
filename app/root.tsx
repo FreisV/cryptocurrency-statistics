@@ -8,7 +8,7 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 import { Provider } from "react-redux";
-import { Global } from "./components/styles";
+import { Global } from "./components/styles/styles";
 import { store } from "./store";
 
 export const links: LinksFunction = () => {

@@ -8,7 +8,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-import { StyledLine } from "./chartStyles";
+import { StyledLine } from "./styles/chartStyles";
 
 ChartJS.register(
   CategoryScale,

@@ -1,9 +1,9 @@
 import type { CryptocurrencyType } from "~/api/cryptocurrencies";
 import { reduceNumber, reduceMoney } from "../utils/helpers/helpers";
-import { GreenSpan, RedSpan } from "./styles";
+import { GreenSpan, RedSpan } from "./styles/styles";
 import { useState } from "react";
 import AddCryptocurrencyModal from "./AddCryptocurrencyModal";
-import { Add, StyledLink, Table, Td, Th, Tr } from "./cryptocurrencyTableStyles";
+import { Add, StyledLink, Table, Td, Th, Tr } from "./styles/cryptocurrencyTableStyles";
 
 type CryptocurrencyTableProps = {
   cryptocurrencies: CryptocurrencyType[];

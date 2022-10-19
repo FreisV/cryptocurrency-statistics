@@ -1,4 +1,4 @@
-import { CurrentPageBtn, Dots, PageBtn, PaginationRow } from "./paginationStyles";
+import { CurrentPageBtn, Dots, PageBtn, PaginationRow } from "./styles/paginationStyles";
 
 type PaginationProps = {
   currentPage: number;

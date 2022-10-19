@@ -11,7 +11,7 @@ import {
   Main,
   RedSpan,
   Row,
-} from "~/components/styles";
+} from "~/components/styles/styles";
 import { reduceMoney, reduceNumber } from "~/utils/helpers/helpers";
 import Chart from "~/components/Chart";
 import AddCryptocurrencyModal from "~/components/AddCryptocurrencyModal";
@@ -20,7 +20,7 @@ import type { CryptocurrencyInBriefcaseType } from "~/types/briefcase";
 import { useTypedSelector } from "~/hooks/useTypedSelector";
 import { useDispatch } from "react-redux";
 import { updateCryptocurrencies } from "~/store/reducers/briefcaseReducer";
-import { AdaptiveRow, Btn, Grey, H2, Symbol, Info, InfoBlock } from "~/components/cryptocurrencyIdStyles";
+import { AdaptiveRow, Btn, Grey, H2, Symbol, Info, InfoBlock } from "~/components/styles/cryptocurrencyIdStyles";
 
 type LoaderType = {
   cryptocurrency: CryptocurrencyType;

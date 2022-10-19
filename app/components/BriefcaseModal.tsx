@@ -1,7 +1,7 @@
 import { useTypedSelector } from "~/hooks/useTypedSelector";
 import BriefcaseModalItem from "./BriefcaseModalItem";
-import { Info } from "./briefcaseModalStyles";
-import { Modal, ModalBody, ModalContent, ModalHeader } from "./modalStyles";
+import { Info } from "./styles/briefcaseModalStyles";
+import { Modal, ModalBody, ModalContent, ModalHeader } from "./styles/modalStyles";
 
 type BriefcaseModalProps = {
   isHide: boolean;

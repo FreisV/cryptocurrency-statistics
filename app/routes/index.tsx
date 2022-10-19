@@ -5,7 +5,7 @@ import { getTopThreeCryptocurrencies } from "~/api/cryptocurrencies";
 import { getCryptocurrencies } from "~/api/cryptocurrencies";
 import type { LoaderFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
-import { AutoOverflow, Main, Wrapper } from "~/components/styles";
+import { AutoOverflow, Main, Wrapper } from "~/components/styles/styles";
 import Header from "~/components/Header";
 import Pagination from "~/components/Pagination";
 import type { CryptocurrencyInBriefcaseType } from "~/types/briefcase";
