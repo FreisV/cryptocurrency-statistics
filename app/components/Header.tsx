@@ -6,15 +6,13 @@ import BriefcaseModal from "./BriefcaseModal";
 import {
   Briefcase,
   Cryptocurrencies,
-  GreenSpan,
-  HeaderSpan,
+  Span,
   Logo,
   Nav,
-  RedSpan,
-  Row,
   StyledHeader,
   StyledLink,
-} from "./styles";
+} from "./headerStyles";
+import { GreenSpan, RedSpan, Row } from "./styles";
 
 type HeaderProps = {
   topThree: CryptocurrencyType[];
@@ -37,7 +35,13 @@ const Header = ({ topThree }: HeaderProps) => {
     setBriefcaseActualCost(
       briefcase.length === 0
         ? 0
-        : briefcase.reduce((sum, current) =>  sum +  current.quantity * parseFloat(current.cryptocurrency.priceUsd || "0"), 0)
+        : briefcase.reduce(
+            (sum, current) =>
+              sum +
+              current.quantity *
+                parseFloat(current.cryptocurrency.priceUsd || "0"),
+            0
+          )
     );
     setCostDifference(
       briefcase.length === 0
@@ -70,15 +74,15 @@ const Header = ({ topThree }: HeaderProps) => {
             <Cryptocurrencies>
               {topThree &&
                 topThree.map((cryptocurrency) => (
-                  <HeaderSpan key={cryptocurrency.id}>
+                  <Span key={cryptocurrency.id}>
                     <StyledLink to={"/" + cryptocurrency.id} prefetch="intent">
                       {cryptocurrency.symbol}: $
                       {reduceMoney(parseFloat(cryptocurrency.priceUsd || "0"))}
                     </StyledLink>
-                  </HeaderSpan>
+                  </Span>
                 ))}
             </Cryptocurrencies>
-            <HeaderSpan>
+            <Span>
               $ {reduceMoney(briefcaseActualCost)}{" "}
               {costDifference > 0 ? (
                 <GreenSpan>
@@ -94,7 +98,7 @@ const Header = ({ topThree }: HeaderProps) => {
                   + ${reduceMoney(costDifference)} ({percentageDifference} %)
                 </span>
               )}
-            </HeaderSpan>
+            </Span>
             <Briefcase onClick={() => setIsBriefcaseHide(false)}>
               Briefcase
             </Briefcase>
