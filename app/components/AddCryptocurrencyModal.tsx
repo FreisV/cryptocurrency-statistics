@@ -3,17 +3,12 @@ import { useDispatch } from "react-redux";
 import type { CryptocurrencyType } from "~/api/cryptocurrencies";
 import { addCryptocurrency } from "~/store/reducers/briefcaseReducer";
 import { reduceMoney } from "~/utils/helpers/helpers";
+import { Modal, ModalBody, ModalContent, ModalForm, ModalHeader, NumberInput } from "./modalStyles";
 import {
   B,
   Button,
   Col,
   InfoSpan,
-  Modal,
-  ModalBody,
-  ModalContent,
-  ModalForm,
-  ModalHeader,
-  NumberInput,
   StyledCol,
 } from "./styles";
 

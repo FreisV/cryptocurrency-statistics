@@ -1,24 +1,12 @@
-import styled from "styled-components";
 import { useTypedSelector } from "~/hooks/useTypedSelector";
 import BriefcaseModalItem from "./BriefcaseModalItem";
-import {
-  Col,
-  Modal,
-  ModalBody,
-  ModalContent,
-  ModalHeader,
-} from "./styles";
+import { Info } from "./briefcaseModalStyles";
+import { Modal, ModalBody, ModalContent, ModalHeader } from "./modalStyles";
 
 type BriefcaseModalProps = {
   isHide: boolean;
   setIsHide: (a: boolean) => void;
 };
-
-const BriefcaseInfo = styled(Col)`
-  padding: 5px 0 10px 0;
-  align-items: center;
-  justify-content: center;
-`;
 
 const BriefcaseModal = ({ isHide, setIsHide }: BriefcaseModalProps) => {
   const briefcase = useTypedSelector((state) => state.briefcase.briefcase);
@@ -32,12 +20,12 @@ const BriefcaseModal = ({ isHide, setIsHide }: BriefcaseModalProps) => {
       <ModalContent onClick={(e) => e.stopPropagation()}>
         <ModalHeader>Briefcase</ModalHeader>
         <ModalBody>
-          <BriefcaseInfo>
+          <Info>
             {briefcase.length === 0
               ? "Briefcase empty"
               : briefcase.map(el => <BriefcaseModalItem item={el} key={el.cryptocurrency.id}/>
               )}
-          </BriefcaseInfo>
+          </Info>
         </ModalBody>
       </ModalContent>
     </Modal>

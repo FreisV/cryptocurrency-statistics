@@ -1,25 +1,17 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import styled from "styled-components";
 import type { CryptocurrencyType } from "~/api/cryptocurrencies";
 import { subtractCryptocurrency } from "~/store/reducers/briefcaseReducer";
 import type { CryptocurrencyInBriefcaseType } from "~/types/briefcase"
 import { reduceMoney } from "~/utils/helpers/helpers"
-import { B, Button, Col, InfoSpan, ModalForm, NumberInput, StyledCol } from "./styles";
+import { Item } from "./briefcaseModalStyles";
+import { ModalForm, NumberInput } from "./modalStyles";
+import { B, Button, InfoSpan, StyledCol } from "./styles";
 
 
 type BriefcaseModalItemProps = {
   item: CryptocurrencyInBriefcaseType
 }
-
-const BriefcaseItem = styled(Col)`
-  width: 100%;
-  padding: 10px 0;
-
-  &:not(:first-child) {
-    border-top: 1px solid #c4c4c4;
-  }
-`;
 
 const BriefcaseModalItem = ({item} : BriefcaseModalItemProps) => {
   const [quantity, setQuantity] = useState(0);
@@ -31,7 +23,7 @@ const BriefcaseModalItem = ({item} : BriefcaseModalItemProps) => {
   }
 
   return (
-    <BriefcaseItem key={item.cryptocurrency.id}>
+    <Item key={item.cryptocurrency.id}>
       <InfoSpan>
         <B>Cryptocurrency: </B> {item.cryptocurrency.name}
       </InfoSpan>
@@ -53,7 +45,7 @@ const BriefcaseModalItem = ({item} : BriefcaseModalItemProps) => {
           <Button>Remove</Button>
         </StyledCol>
       </ModalForm>
-    </BriefcaseItem>
+    </Item>
 )}
 
 export default BriefcaseModalItem
