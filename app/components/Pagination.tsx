@@ -1,42 +1,8 @@
-import { Link } from "@remix-run/react";
-import styled from "styled-components";
-import { Row } from "./styles";
+import { CurrentPageBtn, Dots, PageBtn, PaginationRow } from "./paginationStyles";
 
 type PaginationProps = {
   currentPage: number;
 };
-
-const PaginationRow = styled(Row)`
-  margin: 20px;
-`
-
-const Dots = styled.div`
-  width: 29px;
-  height: 29px;
-  padding: 5px;
-  border-radius: 50%;
-  text-align: center;
-` 
-
-const PageBtn = styled(Link)`
-  width: 29px;
-  height: 29px;
-  padding: 5px;
-  border-radius: 50%;
-  color: black;
-  text-align: center;
-  text-decoration: none;
-
-  &:hover {
-    cursor: pointer;
-    text-decoration: underline;
-  }
-`
-
-const CurrentPageBtn = styled(PageBtn)`
-  background-color: #e4e4e4;
-  font-weight: 600;
-`
 
 const Pagination = ({ currentPage }: PaginationProps) => {
   const range = {
