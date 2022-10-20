@@ -49,4 +49,10 @@ export const Btn = styled(Button)`
   width: fit-content;
   margin: 0;
   font-size: 1.2em;
+  
+  @media (max-width: 600px) {
+    font-size: 1.1em;
+    margin-top: 30px;
+    align-self: flex-end;
+  }
 `
