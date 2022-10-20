@@ -10,7 +10,6 @@ import {
   GreenSpan,
   Main,
   RedSpan,
-  Row,
 } from "~/components/styles/styles";
 import { reduceMoney, reduceNumber } from "~/utils/helpers/helpers";
 import Chart from "~/components/Chart";
@@ -20,7 +19,7 @@ import type { CryptocurrencyInBriefcaseType } from "~/types/briefcase";
 import { useTypedSelector } from "~/hooks/useTypedSelector";
 import { useDispatch } from "react-redux";
 import { updateCryptocurrencies } from "~/store/reducers/briefcaseReducer";
-import { AdaptiveRow, Btn, Grey, H2, Symbol, Info, InfoBlock } from "~/components/styles/cryptocurrencyIdStyles";
+import { AdaptiveRow, Btn, Grey, H2, Symbol, Info, InfoBlock, InfoRow } from "~/components/styles/cryptocurrencyIdStyles";
 
 type LoaderType = {
   cryptocurrency: CryptocurrencyType;
@@ -114,22 +113,22 @@ const CryptocurrencyInfo = () => {
           </Col>
 
           <InfoBlock>
-            <Col width="46%" minWidth="140px">
-              <Row>
+            <Col width="46%" minWidth="120px">
+              <InfoRow>
                 <Grey>HIGH</Grey>
                 <B>$ {high}</B>
-              </Row>
-              <Row>
+              </InfoRow>
+              <InfoRow>
                 <Grey>LOW</Grey>
                 <B>$ {low}</B>
-              </Row>
+              </InfoRow>
             </Col>
-            <Col width="46%" minWidth="160px">
-              <Row>
+            <Col width="46%" minWidth="150px">
+              <InfoRow>
                 <Grey>AVERAGE </Grey>
                 <B>{vwap24Hr}</B>
-              </Row>
-              <Row>
+              </InfoRow>
+              <InfoRow>
                 <Grey>CHANGE</Grey>
                 <B>
                   {typeof changePercent24Hr !== "number" ? (
@@ -142,7 +141,7 @@ const CryptocurrencyInfo = () => {
                     { changePercent24Hr } + "%"
                   )}
                 </B>
-              </Row>
+              </InfoRow>
             </Col>
           </InfoBlock>
         </AdaptiveRow>

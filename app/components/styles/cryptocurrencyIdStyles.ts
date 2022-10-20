@@ -26,6 +26,13 @@ export const InfoBlock = styled(Row)`
   }
 `;
 
+export const InfoRow = styled(Row)`
+
+  @media (max-width: 660px) {
+    font-size: 0.9em;
+  }
+`
+
 export const Grey = styled.span`
   font-weight: 500;
   color: grey;
