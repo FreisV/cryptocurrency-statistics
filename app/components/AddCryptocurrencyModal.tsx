@@ -61,7 +61,7 @@ const AddCryptocurrencyModal = ({cryptocurrency, isHide, setIsHide}: AddCryptocu
                   onChange={e => setQuantity(Number(e.target.value))}
                 />
                 <InfoSpan><B>Sum: </B>$ {sum === 0 ? 0 : reduceMoney(sum)}</InfoSpan>
-                <Button>Add</Button>
+                <Button type="submit">Add</Button>
               </StyledCol>
             </ModalForm>
           </Col>

@@ -42,7 +42,7 @@ const BriefcaseModalItem = ({item} : BriefcaseModalItemProps) => {
             placeholder="Amount of cryptocurrency"
             onChange={e => setQuantity(parseFloat(e.target.value))}
           />
-          <Button>Remove</Button>
+          <Button type="submit">Remove</Button>
         </StyledCol>
       </ModalForm>
     </Item>
