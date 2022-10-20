@@ -70,6 +70,10 @@ export const Span = styled.span`
   @media (max-width: 930px) {
     padding: 10px;
   }
+
+  @media (max-width: 712px) {
+    padding: 0;
+  }
 `;
 
 export const NoWrapSpan= styled.span`
