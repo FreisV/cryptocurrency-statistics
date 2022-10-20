@@ -11,6 +11,7 @@ import {
   Nav,
   StyledHeader,
   StyledLink,
+  NoWrapSpan,
 } from "./styles/headerStyles";
 import { GreenSpan, RedSpan, Row } from "./styles/styles";
 
@@ -83,20 +84,19 @@ const Header = ({ topThree }: HeaderProps) => {
                 ))}
             </Cryptocurrencies>
             <Span>
-              $ {reduceMoney(briefcaseActualCost)}{" "}
+              {`$ ${reduceMoney(briefcaseActualCost)} `}
               {costDifference > 0 ? (
                 <GreenSpan>
-                  + ${reduceMoney(costDifference)} ({percentageDifference} %)
+                  {`+ $ ${reduceMoney(costDifference)} (${percentageDifference}) %`}
                 </GreenSpan>
               ) : costDifference < 0 ? (
                 <RedSpan>
-                  - ${reduceMoney(Math.abs(costDifference))} (
-                  {percentageDifference} %)
+                  {`- $ ${reduceMoney(Math.abs(costDifference))} (${percentageDifference}) %`}
                 </RedSpan>
               ) : (
-                <span>
-                  + ${reduceMoney(costDifference)} ({percentageDifference} %)
-                </span>
+                <NoWrapSpan>
+                  {`+ $ ${reduceMoney(costDifference)} (${percentageDifference}) %`}
+                </NoWrapSpan>
               )}
             </Span>
             <Briefcase onClick={() => setIsBriefcaseHide(false)}>

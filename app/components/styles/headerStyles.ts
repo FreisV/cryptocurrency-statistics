@@ -23,6 +23,14 @@ export const Logo = styled.h1`
   border: 2px solid black;
   border-radius: 4px;
   text-decoration: none;
+  
+  @media (max-width: 780px) {
+    margin: 10px 10px 10px 15px;
+  }
+
+  @media (max-width: 500px) {
+    font-size: 1.5em;
+  }
 `;
 
 export const Nav = styled.nav`
@@ -41,19 +49,32 @@ export const Briefcase = styled.span`
   &:hover {
     cursor:pointer;
   }
+
+  @media (max-width: 780px) {
+    padding: 10px 15px 10px 10px;
+  }
+
 `;
 
 export const Cryptocurrencies = styled(Row)`
 
-  @media (max-width: 600px) {
+  @media (max-width: 712px) {
     display: none;
-  }
+  } 
 `
 
 export const Span = styled.span`
   padding: 15px;
   font-size: 0.95em;
+
+  @media (max-width: 930px) {
+    padding: 10px;
+  }
 `;
+
+export const NoWrapSpan= styled.span`
+  white-space: nowrap;
+`
 
 export const StyledLink = styled(Link)`
   color: #3b3b3b;

@@ -31,10 +31,12 @@ export const B = styled.b`
 
 export const RedSpan = styled.span`
   color: #f44336;
+  white-space: nowrap;
 `;
 
 export const GreenSpan = styled.span`
   color: #18c683;
+  white-space: nowrap;
 `;
 
 type FlexProps = {
