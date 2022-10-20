@@ -7,7 +7,7 @@ export const StyledHeader = styled.header`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100vw;
+  width: 100%;
   height: 70px;
   margin-bottom: 30px;
   color: #3b3b3b;
