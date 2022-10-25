@@ -39,6 +39,10 @@ export const GreenSpan = styled.span`
   white-space: nowrap;
 `;
 
+export const NoWrapSpan= styled.span`
+  white-space: nowrap;
+`
+
 type FlexProps = {
   maxWidth?: string;
   minWidth?: string;

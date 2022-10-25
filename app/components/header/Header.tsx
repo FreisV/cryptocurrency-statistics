@@ -11,9 +11,8 @@ import {
   Nav,
   StyledHeader,
   StyledLink,
-  NoWrapSpan,
 } from "./styles";
-import { GreenSpan, RedSpan, Row } from "../styles/styles";
+import { GreenSpan, NoWrapSpan, RedSpan, Row } from "../styles/styles";
 
 type HeaderProps = {
   topThree: CryptocurrencyType[];

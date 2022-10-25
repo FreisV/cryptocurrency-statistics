@@ -10,7 +10,8 @@ import {
   InfoRow,
   Symbol,
 } from "./styles";
-import { B, Col, GreenSpan, RedSpan } from "../styles/styles";
+import { B, Col } from "../styles/styles";
+import Percentages from "../percentages/Percentages";
 
 type InfoCardProps = {
   cryptocurrency: CryptocurrencyType;
@@ -23,13 +24,12 @@ const InfoCard = ({
   history,
   setModalIsHide,
 }: InfoCardProps) => {
-  
   const vwap24Hr = cryptocurrency.vwap24Hr
     ? "$ " + reduceMoney(parseFloat(cryptocurrency.vwap24Hr))
     : "none";
   const changePercent24Hr = cryptocurrency.changePercent24Hr
     ? reduceNumber(parseFloat(cryptocurrency.changePercent24Hr))
-    : "none";
+    : null;
 
   const allPrices = history.map((el) => parseFloat(el.priceUsd));
   const high = allPrices.length === 0 ? 0 : reduceMoney(Math.max(...allPrices));
@@ -62,15 +62,7 @@ const InfoCard = ({
             <InfoRow>
               <Grey>CHANGE</Grey>
               <B>
-                {typeof changePercent24Hr !== "number" ? (
-                  "none"
-                ) : changePercent24Hr > 0 ? (
-                  <GreenSpan>{changePercent24Hr} %</GreenSpan>
-                ) : changePercent24Hr < 0 ? (
-                  <RedSpan>{changePercent24Hr} %</RedSpan>
-                ) : (
-                  { changePercent24Hr } + "%"
-                )}
+                <Percentages percentages={changePercent24Hr} />
               </B>
             </InfoRow>
           </Col>

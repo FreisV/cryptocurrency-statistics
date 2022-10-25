@@ -76,10 +76,6 @@ export const Span = styled.span`
   }
 `;
 
-export const NoWrapSpan= styled.span`
-  white-space: nowrap;
-`
-
 export const StyledLink = styled(Link)`
   color: #3b3b3b;
   text-decoration: none;
