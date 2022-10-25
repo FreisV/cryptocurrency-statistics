@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import type { CryptocurrencyType } from "~/api/cryptocurrencies";
+import type { CryptocurrencyType } from "~/types/cryptocurrencies";
 import { addCryptocurrency } from "~/store/reducers/briefcaseReducer";
 import { reduceMoney } from "~/utils/helpers/helpers";
 import { Modal, ModalBody, ModalContent, ModalForm, ModalHeader, NumberInput, StyledCol } from "../styles/modalStyles";

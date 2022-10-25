@@ -1,6 +1,6 @@
 import type { LoaderFunction } from "@remix-run/node";
 import { Outlet, useLoaderData } from "@remix-run/react";
-import type { CryptocurrencyType } from "~/api/cryptocurrencies";
+import type { CryptocurrencyType } from "~/types/cryptocurrencies";
 import { getTopThreeCryptocurrencies } from "~/api/cryptocurrencies";
 import Header from "~/components/header/Header";
 import { Wrapper } from "~/components/styles/styles";

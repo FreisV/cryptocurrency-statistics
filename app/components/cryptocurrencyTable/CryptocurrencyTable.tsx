@@ -1,4 +1,4 @@
-import type { CryptocurrencyType } from "~/api/cryptocurrencies";
+import type { CryptocurrencyType } from "~/types/cryptocurrencies";
 import { reduceNumber, reduceMoney } from "../../utils/helpers/helpers";
 import { GreenSpan, RedSpan } from "../styles/styles";
 import { useState } from "react";

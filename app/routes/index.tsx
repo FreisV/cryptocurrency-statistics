@@ -1,5 +1,5 @@
 import CryptocurrencyTable from "~/components/cryptocurrencyTable/CryptocurrencyTable";
-import type { CryptocurrencyType } from "~/api/cryptocurrencies";
+import type { CryptocurrencyType } from "~/types/cryptocurrencies";
 import { getCryptocurrencyById } from "~/api/cryptocurrencies";
 import { getTopThreeCryptocurrencies } from "~/api/cryptocurrencies";
 import { getCryptocurrencies } from "~/api/cryptocurrencies";

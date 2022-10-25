@@ -1,16 +1,10 @@
-import type { CryptocurrencyType, HistoryType } from "~/api/cryptocurrencies";
+import type { CryptocurrencyType, HistoryType } from "~/types/cryptocurrencies";
 import { getHistoryById } from "~/api/cryptocurrencies";
 import { getCryptocurrencyById } from "~/api/cryptocurrencies";
 import invariant from "tiny-invariant";
 import type { LoaderFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
-import {
-  B,
-  Col,
-  GreenSpan,
-  Main,
-  RedSpan,
-} from "~/components/styles/styles";
+import { B, Col, GreenSpan, Main, RedSpan } from "~/components/styles/styles";
 import { reduceMoney, reduceNumber } from "~/utils/helpers/helpers";
 import Chart from "~/components/chart/Chart";
 import AddCryptocurrencyModal from "~/components/addCryptocurrencyModal/AddCryptocurrencyModal";
@@ -19,7 +13,16 @@ import type { CryptocurrencyInBriefcaseType } from "~/types/briefcase";
 import { useTypedSelector } from "~/hooks/useTypedSelector";
 import { useDispatch } from "react-redux";
 import { updateCryptocurrencies } from "~/store/reducers/briefcaseReducer";
-import { AdaptiveRow, Btn, Grey, H2, Symbol, Info, InfoBlock, InfoRow } from "~/components/styles/cryptocurrencyIdStyles";
+import {
+  AdaptiveRow,
+  Btn,
+  Grey,
+  H2,
+  Symbol,
+  Info,
+  InfoBlock,
+  InfoRow,
+} from "~/components/styles/cryptocurrencyIdStyles";
 
 type LoaderType = {
   cryptocurrency: CryptocurrencyType;
@@ -38,11 +41,8 @@ const CryptocurrencyInfo = () => {
   const { cryptocurrency, history } = useLoaderData<LoaderType>();
   const [modalIsHide, setModalIsHide] = useState(true);
 
-  
-
   const briefcase = useTypedSelector((state) => state.briefcase.briefcase);
   const dispatch = useDispatch();
-
 
   useEffect(() => {
     const getUpdatedData = async (
@@ -73,7 +73,7 @@ const CryptocurrencyInfo = () => {
   const allPrices = history.map((el) => parseFloat(el.priceUsd));
   const high = allPrices.length === 0 ? 0 : reduceMoney(Math.max(...allPrices));
   const low = allPrices.length === 0 ? 0 : reduceMoney(Math.min(...allPrices));
-    
+
   const chartLabels = history.map((el) => {
     const date = new Date(el.time);
     const monthNames = [

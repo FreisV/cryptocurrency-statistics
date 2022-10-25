@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import type { CryptocurrencyType } from "~/api/cryptocurrencies";
+import type { CryptocurrencyType } from "~/types/cryptocurrencies";
 import { subtractCryptocurrency } from "~/store/reducers/briefcaseReducer";
 import type { CryptocurrencyInBriefcaseType } from "~/types/briefcase"
 import { reduceMoney } from "~/utils/helpers/helpers"

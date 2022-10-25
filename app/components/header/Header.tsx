@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import type { CryptocurrencyType } from "~/api/cryptocurrencies";
+import type { CryptocurrencyType } from "~/types/cryptocurrencies";
 import { useTypedSelector } from "~/hooks/useTypedSelector";
 import { reduceMoney, reduceNumber } from "~/utils/helpers/helpers";
 import BriefcaseModal from "../briefcaseModal/BriefcaseModal";
