@@ -4,8 +4,7 @@ import { getCryptocurrencyById } from "~/api/cryptocurrencies";
 import invariant from "tiny-invariant";
 import type { LoaderFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
-import { B, Col, GreenSpan, Main, RedSpan } from "~/components/styles/styles";
-import { reduceMoney, reduceNumber } from "~/utils/helpers/helpers";
+import { Main } from "~/components/styles/styles";
 import Chart from "~/components/chart/Chart";
 import AddCryptocurrencyModal from "~/components/addCryptocurrencyModal/AddCryptocurrencyModal";
 import { useEffect, useState } from "react";
@@ -13,16 +12,7 @@ import type { CryptocurrencyInBriefcaseType } from "~/types/briefcase";
 import { useTypedSelector } from "~/hooks/useTypedSelector";
 import { useDispatch } from "react-redux";
 import { updateCryptocurrencies } from "~/store/reducers/briefcaseReducer";
-import {
-  AdaptiveRow,
-  Btn,
-  Grey,
-  H2,
-  Symbol,
-  Info,
-  InfoBlock,
-  InfoRow,
-} from "~/components/styles/cryptocurrencyIdStyles";
+import InfoCard from "~/components/infoCard/InfoCard";
 
 type LoaderType = {
   cryptocurrency: CryptocurrencyType;
@@ -63,41 +53,6 @@ const CryptocurrencyInfo = () => {
     return null;
   }
 
-  const vwap24Hr = cryptocurrency.vwap24Hr
-    ? "$ " + reduceMoney(parseFloat(cryptocurrency.vwap24Hr))
-    : "none";
-  const changePercent24Hr = cryptocurrency.changePercent24Hr
-    ? reduceNumber(parseFloat(cryptocurrency.changePercent24Hr))
-    : "none";
-
-  const allPrices = history.map((el) => parseFloat(el.priceUsd));
-  const high = allPrices.length === 0 ? 0 : reduceMoney(Math.max(...allPrices));
-  const low = allPrices.length === 0 ? 0 : reduceMoney(Math.min(...allPrices));
-
-  const chartLabels = history.map((el) => {
-    const date = new Date(el.time);
-    const monthNames = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December",
-    ];
-
-    const hours = date.getHours();
-    const day = date.getDate();
-    const month = monthNames[date.getMonth()];
-
-    return `${day} ${month} ${hours}:00`;
-  });
-
   return (
     <Main>
       <AddCryptocurrencyModal
@@ -105,53 +60,12 @@ const CryptocurrencyInfo = () => {
         isHide={modalIsHide}
         setIsHide={setModalIsHide}
       />
-      <Info wrap="wrap">
-        <AdaptiveRow>
-          <Col justify="start">
-            <H2>{cryptocurrency.name}</H2>
-            <Symbol>{cryptocurrency.symbol}</Symbol>
-          </Col>
-
-          <InfoBlock>
-            <Col width="46%" minWidth="120px">
-              <InfoRow>
-                <Grey>HIGH</Grey>
-                <B>$ {high}</B>
-              </InfoRow>
-              <InfoRow>
-                <Grey>LOW</Grey>
-                <B>$ {low}</B>
-              </InfoRow>
-            </Col>
-            <Col width="46%" minWidth="150px">
-              <InfoRow>
-                <Grey>AVERAGE </Grey>
-                <B>{vwap24Hr}</B>
-              </InfoRow>
-              <InfoRow>
-                <Grey>CHANGE</Grey>
-                <B>
-                  {typeof changePercent24Hr !== "number" ? (
-                    "none"
-                  ) : changePercent24Hr > 0 ? (
-                    <GreenSpan>{changePercent24Hr} %</GreenSpan>
-                  ) : changePercent24Hr < 0 ? (
-                    <RedSpan>{changePercent24Hr} %</RedSpan>
-                  ) : (
-                    { changePercent24Hr } + "%"
-                  )}
-                </B>
-              </InfoRow>
-            </Col>
-          </InfoBlock>
-        </AdaptiveRow>
-        <Btn onClick={() => setModalIsHide(false)}>Add into briefcase</Btn>
-      </Info>
-      <Chart
-        name={cryptocurrency.name}
-        labels={chartLabels}
-        values={history.map((el) => parseFloat(el.priceUsd))}
+      <InfoCard
+        cryptocurrency={cryptocurrency}
+        history={history}
+        setModalIsHide={setModalIsHide}
       />
+      <Chart name={cryptocurrency.name} history={history} />
     </Main>
   );
 };

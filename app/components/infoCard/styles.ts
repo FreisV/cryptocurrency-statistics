@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Button, Col, Row } from "./styles";
+import { Button, Col, Row } from "../styles/styles";
 
 export const Info = styled(Col)`
   width: 100%;

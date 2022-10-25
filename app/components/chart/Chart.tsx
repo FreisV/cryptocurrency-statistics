@@ -8,6 +8,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+import type { HistoryType } from "~/types/cryptocurrencies";
 import { StyledLine } from "./styles";
 
 ChartJS.register(
@@ -20,13 +21,41 @@ ChartJS.register(
   Legend
 );
 
-type ChartProps = {
-  name: string;
-  labels: string[];
-  values: number[];
+enum months {
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
 }
 
-const Chart = ({name, labels, values} : ChartProps) => {
+type ChartProps = {
+  name: string;
+  history: HistoryType[];
+};
+
+const getLabel = (el: HistoryType) => {
+  const date = new Date(el.time);
+
+  const hours = date.getHours();
+  const day = date.getDate();
+  const month = months[date.getMonth()];
+
+  return `${day} ${month} ${hours}:00`;
+};
+
+const Chart = ({ name, history }: ChartProps) => {
+  const labels = history.map((el) => getLabel(el));
+
+  const values = history.map((el) => parseFloat(el.priceUsd));
+
   const options = {
     responsive: true,
     maintainAspectRatio: false,
