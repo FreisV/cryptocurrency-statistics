@@ -1,4 +1,4 @@
-import type { CryptocurrencyType } from "~/api/cryptocurrencies";
+import type { CryptocurrencyType } from "~/types/cryptocurrencies";
 
 export type CryptocurrencyInBriefcaseType = {
   cryptocurrency: CryptocurrencyType;
