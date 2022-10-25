@@ -1,6 +1,6 @@
 import { Link } from "@remix-run/react";
 import styled from "styled-components";
-import { Row } from "./styles";
+import { Row } from "../styles/styles";
 
 export const StyledHeader = styled.header`
   display: flex;

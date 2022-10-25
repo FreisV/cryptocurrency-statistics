@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import type { CryptocurrencyType } from "~/api/cryptocurrencies";
 import { useTypedSelector } from "~/hooks/useTypedSelector";
 import { reduceMoney, reduceNumber } from "~/utils/helpers/helpers";
-import BriefcaseModal from "./BriefcaseModal";
+import BriefcaseModal from "../briefcaseModal/BriefcaseModal";
 import {
   Briefcase,
   Cryptocurrencies,
@@ -12,8 +12,8 @@ import {
   StyledHeader,
   StyledLink,
   NoWrapSpan,
-} from "./styles/headerStyles";
-import { GreenSpan, RedSpan, Row } from "./styles/styles";
+} from "./styles";
+import { GreenSpan, RedSpan, Row } from "../styles/styles";
 
 type HeaderProps = {
   topThree: CryptocurrencyType[];

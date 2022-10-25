@@ -12,8 +12,8 @@ import {
   RedSpan,
 } from "~/components/styles/styles";
 import { reduceMoney, reduceNumber } from "~/utils/helpers/helpers";
-import Chart from "~/components/Chart";
-import AddCryptocurrencyModal from "~/components/AddCryptocurrencyModal";
+import Chart from "~/components/chart/Chart";
+import AddCryptocurrencyModal from "~/components/addCryptocurrencyModal/AddCryptocurrencyModal";
 import { useEffect, useState } from "react";
 import type { CryptocurrencyInBriefcaseType } from "~/types/briefcase";
 import { useTypedSelector } from "~/hooks/useTypedSelector";

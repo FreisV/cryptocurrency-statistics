@@ -1,4 +1,4 @@
-import CryptocurrencyTable from "~/components/CryptocurrencyTable";
+import CryptocurrencyTable from "~/components/cryptocurrencyTable/CryptocurrencyTable";
 import type { CryptocurrencyType } from "~/api/cryptocurrencies";
 import { getCryptocurrencyById } from "~/api/cryptocurrencies";
 import { getTopThreeCryptocurrencies } from "~/api/cryptocurrencies";
@@ -6,8 +6,8 @@ import { getCryptocurrencies } from "~/api/cryptocurrencies";
 import type { LoaderFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import { AutoOverflow, Main, Wrapper } from "~/components/styles/styles";
-import Header from "~/components/Header";
-import Pagination from "~/components/Pagination";
+import Header from "~/components/header/Header";
+import Pagination from "~/components/pagination/Pagination";
 import type { CryptocurrencyInBriefcaseType } from "~/types/briefcase";
 import { useEffect } from "react";
 import { useTypedSelector } from "~/hooks/useTypedSelector";

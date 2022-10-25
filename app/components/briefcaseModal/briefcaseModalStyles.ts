@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Col } from "./styles";
+import { Col } from "../styles/styles";
 
 export const Item = styled(Col)`
   width: 100%;

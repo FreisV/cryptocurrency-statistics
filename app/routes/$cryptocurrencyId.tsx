@@ -2,7 +2,7 @@ import type { LoaderFunction } from "@remix-run/node";
 import { Outlet, useLoaderData } from "@remix-run/react";
 import type { CryptocurrencyType } from "~/api/cryptocurrencies";
 import { getTopThreeCryptocurrencies } from "~/api/cryptocurrencies";
-import Header from "~/components/Header";
+import Header from "~/components/header/Header";
 import { Wrapper } from "~/components/styles/styles";
 
 export const loader: LoaderFunction = () => {
