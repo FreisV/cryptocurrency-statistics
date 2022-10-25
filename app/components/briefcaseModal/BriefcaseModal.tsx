@@ -1,6 +1,6 @@
 import { useTypedSelector } from "~/hooks/useTypedSelector";
 import BriefcaseModalItem from "../briefcaseModalItem/BriefcaseModalItem";
-import { Info } from "./briefcaseModalStyles";
+import { Info } from "./styles";
 import {
   Modal,
   ModalBody,

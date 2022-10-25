@@ -4,7 +4,7 @@ import type { CryptocurrencyType } from "~/types/cryptocurrencies";
 import { subtractCryptocurrency } from "~/store/reducers/briefcaseReducer";
 import type { CryptocurrencyInBriefcaseType } from "~/types/briefcase";
 import { reduceMoney } from "~/utils/helpers/helpers";
-import { Item } from "../briefcaseModal/briefcaseModalStyles";
+import { Item } from "../briefcaseModal/styles";
 import { ModalForm, NumberInput, StyledCol } from "../styles/modalStyles";
 import { B, Button, InfoSpan } from "../styles/styles";
 
