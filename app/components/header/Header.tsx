@@ -86,15 +86,21 @@ const Header = ({ topThree }: HeaderProps) => {
               {`$ ${reduceMoney(briefcaseActualCost)} `}
               {costDifference > 0 ? (
                 <GreenSpan>
-                  {`+ $ ${reduceMoney(costDifference)} (${percentageDifference}) %`}
+                  {`+ $ ${reduceMoney(
+                    costDifference
+                  )} (${percentageDifference}) %`}
                 </GreenSpan>
               ) : costDifference < 0 ? (
                 <RedSpan>
-                  {`- $ ${reduceMoney(Math.abs(costDifference))} (${percentageDifference}) %`}
+                  {`- $ ${reduceMoney(
+                    Math.abs(costDifference)
+                  )} (${percentageDifference}) %`}
                 </RedSpan>
               ) : (
                 <NoWrapSpan>
-                  {`+ $ ${reduceMoney(costDifference)} (${percentageDifference}) %`}
+                  {`+ $ ${reduceMoney(
+                    costDifference
+                  )} (${percentageDifference}) %`}
                 </NoWrapSpan>
               )}
             </Span>

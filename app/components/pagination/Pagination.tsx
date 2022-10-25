@@ -16,8 +16,8 @@ const Pagination = ({ currentPage }: PaginationProps) => {
     },
   };
   
-  if(currentPage < range.from || currentPage > range.to) {
-    throw new Error('Incorrect current page');
+  if (currentPage < range.from || currentPage > range.to) {
+    throw new Error("Incorrect current page");
   }
 
 

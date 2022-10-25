@@ -7,7 +7,6 @@ export const Table = styled.table`
 `;
 
 export const Th = styled.th`
-  /*Adapt the text-align*/
   text-align: ${(props) => (props.align ? props.align : "end")};
 
   padding: 1em;
@@ -23,7 +22,6 @@ export const Th = styled.th`
 `;
 
 export const Td = styled.td`
-  /*Adapt the text-align*/
   text-align: ${(props) => (props.align ? props.align : "end")};
 
   border-bottom: 1px solid #c4c4c4;
@@ -49,10 +47,10 @@ export const Add = styled.button`
   font-weight: 300;
   transition: font-size 100ms;
   border: none;
-  background-color: rgba(255,255,255,0);
+  background-color: rgba(255, 255, 255, 0);
 
   &:hover {
     font-size: 2em;
     cursor: pointer;
   }
-`
+`;

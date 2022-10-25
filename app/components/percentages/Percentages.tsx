@@ -5,8 +5,8 @@ type PercentagesProps = {
 };
 
 const Percentages = ({ percentages }: PercentagesProps) => {
-  if (percentages === null){
-    return <NoWrapSpan>none</NoWrapSpan>
+  if (percentages === null) {
+    return <NoWrapSpan>none</NoWrapSpan>;
   }
 
   if (percentages > 0) {
@@ -17,7 +17,7 @@ const Percentages = ({ percentages }: PercentagesProps) => {
     return <RedSpan>{percentages} %</RedSpan>;
   }
 
-  return <NoWrapSpan>{percentages} %</NoWrapSpan>
+  return <NoWrapSpan>{percentages} %</NoWrapSpan>;
 };
 
 export default Percentages;

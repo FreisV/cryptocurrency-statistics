@@ -1,7 +1,12 @@
 import { useTypedSelector } from "~/hooks/useTypedSelector";
 import BriefcaseModalItem from "../briefcaseModalItem/BriefcaseModalItem";
 import { Info } from "./briefcaseModalStyles";
-import { Modal, ModalBody, ModalContent, ModalHeader } from "../styles/modalStyles";
+import {
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalHeader,
+} from "../styles/modalStyles";
 
 type BriefcaseModalProps = {
   isHide: boolean;
@@ -23,8 +28,9 @@ const BriefcaseModal = ({ isHide, setIsHide }: BriefcaseModalProps) => {
           <Info>
             {briefcase.length === 0
               ? "Briefcase empty"
-              : briefcase.map(el => <BriefcaseModalItem item={el} key={el.cryptocurrency.id}/>
-              )}
+              : briefcase.map((el) => (
+                  <BriefcaseModalItem item={el} key={el.cryptocurrency.id} />
+                ))}
           </Info>
         </ModalBody>
       </ModalContent>

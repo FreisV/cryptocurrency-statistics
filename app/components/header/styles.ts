@@ -23,7 +23,7 @@ export const Logo = styled.h1`
   border: 2px solid black;
   border-radius: 4px;
   text-decoration: none;
-  
+
   @media (max-width: 780px) {
     margin: 10px 10px 10px 15px;
   }
@@ -38,7 +38,7 @@ export const Nav = styled.nav`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-`
+`;
 
 export const Briefcase = styled.span`
   padding: 10px 30px;
@@ -47,21 +47,19 @@ export const Briefcase = styled.span`
   align-self: right;
 
   &:hover {
-    cursor:pointer;
+    cursor: pointer;
   }
 
   @media (max-width: 780px) {
     padding: 10px 15px 10px 10px;
   }
-
 `;
 
 export const Cryptocurrencies = styled(Row)`
-
   @media (max-width: 712px) {
     display: none;
-  } 
-`
+  }
+`;
 
 export const Span = styled.span`
   padding: 15px;

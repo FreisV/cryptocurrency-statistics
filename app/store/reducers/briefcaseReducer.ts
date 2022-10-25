@@ -130,9 +130,15 @@ export const addCryptocurrency = (payload: CryptocurrencyInBriefcaseType) => ({
   payload,
 });
 
-export const subtractCryptocurrency = (payload: {cryptocurrency: CryptocurrencyType, quantity: number}) => ({
-   type: BriefcaseActionTypes.SUBTRACT_CRYPTOCURRENCY,
-   payload 
+export const subtractCryptocurrency = (payload: {
+  cryptocurrency: CryptocurrencyType;
+  quantity: number;
+}) => ({
+  type: BriefcaseActionTypes.SUBTRACT_CRYPTOCURRENCY,
+  payload,
 });
 
-export const updateCryptocurrencies = ( payload: CryptocurrencyType[] ) => ({ type: BriefcaseActionTypes.UPDATE_CRYPTOCURRENCIES, payload });
+export const updateCryptocurrencies = (payload: CryptocurrencyType[]) => ({
+  type: BriefcaseActionTypes.UPDATE_CRYPTOCURRENCIES,
+  payload,
+});

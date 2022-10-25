@@ -27,11 +27,10 @@ export const InfoBlock = styled(Row)`
 `;
 
 export const InfoRow = styled(Row)`
-
   @media (max-width: 660px) {
     font-size: 0.9em;
   }
-`
+`;
 
 export const Grey = styled.span`
   font-weight: 500;
@@ -56,10 +55,10 @@ export const Btn = styled(Button)`
   width: fit-content;
   margin: 0;
   font-size: 1.2em;
-  
+
   @media (max-width: 600px) {
     font-size: 1.1em;
     margin-top: 30px;
     align-self: flex-end;
   }
-`
+`;

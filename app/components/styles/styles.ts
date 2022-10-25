@@ -39,9 +39,9 @@ export const GreenSpan = styled.span`
   white-space: nowrap;
 `;
 
-export const NoWrapSpan= styled.span`
+export const NoWrapSpan = styled.span`
   white-space: nowrap;
-`
+`;
 
 type FlexProps = {
   maxWidth?: string;
@@ -61,13 +61,13 @@ export const Row = styled.div<FlexProps>`
 
   width: ${(props) => (props.width ? props.width : "auto")};
   max-width: ${(props) => (props.maxWidth ? props.maxWidth : "auto")};
-  min-width: ${(props) => (props.minWidth ? props.minWidth : "auto")};;
+  min-width: ${(props) => (props.minWidth ? props.minWidth : "auto")};
   height: ${(props) => (props.height ? props.height : "auto")};
   max-height: ${(props) => (props.maxHeight ? props.maxHeight : "auto")};
   min-height: ${(props) => (props.minHeight ? props.minHeight : "auto")};
   align-items: ${(props) => (props.align ? props.align : "initial")};
   justify-content: ${(props) =>
-  props.justify ? props.justify : "space-between"};
+    props.justify ? props.justify : "space-between"};
   flex-wrap: ${(props) => (props.wrap ? props.wrap : "initial")};
 `;
 
@@ -77,13 +77,13 @@ export const Col = styled.div<FlexProps>`
 
   width: ${(props) => (props.width ? props.width : "auto")};
   max-width: ${(props) => (props.maxWidth ? props.maxWidth : "auto")};
-  min-width: ${(props) => (props.minWidth ? props.minWidth : "auto")};;
+  min-width: ${(props) => (props.minWidth ? props.minWidth : "auto")};
   height: ${(props) => (props.height ? props.height : "auto")};
   max-height: ${(props) => (props.maxHeight ? props.maxHeight : "auto")};
   min-height: ${(props) => (props.minHeight ? props.minHeight : "auto")};
   align-items: ${(props) => (props.align ? props.align : "initial")};
   justify-content: ${(props) =>
-  props.justify ? props.justify : "space-between"};
+    props.justify ? props.justify : "space-between"};
   flex-wrap: ${(props) => (props.wrap ? props.wrap : "initial")};
 `;
 
@@ -105,15 +105,14 @@ export const Button = styled.button`
   &:hover {
     background-color: rgb(80, 156, 255);
     cursor: pointer;
-    
   }
-`
+`;
 
 export const InfoSpan = styled.span`
   margin: 10px;
-`
+`;
 
-export const AutoOverflow = styled.div` 
+export const AutoOverflow = styled.div`
   width: 100%;
   overflow: auto;
-`
+`;
